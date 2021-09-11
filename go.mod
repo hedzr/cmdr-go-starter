@@ -6,7 +6,7 @@ go 1.16
 
 //replace github.com/hedzr/logex => ../15.logex
 
-replace github.com/hedzr/cmdr => ../50.cmdr
+//replace github.com/hedzr/cmdr => ../50.cmdr
 
 //replace github.com/hedzr/cmdr-addons => ../53.cmdr-addons
 
