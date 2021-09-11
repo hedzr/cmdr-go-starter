@@ -37,6 +37,7 @@ jobs:
       - name: Test
         run: |
           GOSUMDB=off go mod download
+          go install -v github.com/swaggo/swag/cmd/swag
           go generate ./...
           go build -v -o main ./cli/app/cli/app/
           rm main
@@ -141,6 +142,7 @@ jobs:
               GOVERSION: $GOVERSION
               BUILDTIME: $BUILDTIME
           EOF
+          go install -v github.com/swaggo/swag/cmd/swag
           go generate ./...
           # for app in app1 app2 app3 ...; do
           for app in app ; do
