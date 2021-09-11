@@ -37,6 +37,7 @@ jobs:
       - name: Test
         run: |
           GOSUMDB=off go mod download
+          go generate ./...
           go build -v -o main ./cli/app/cli/app/
           rm main
           go test -v ./...
@@ -140,6 +141,7 @@ jobs:
               GOVERSION: $GOVERSION
               BUILDTIME: $BUILDTIME
           EOF
+          go generate ./...
           # for app in app1 app2 app3 ...; do
           for app in app ; do
           for dir in cli; do
