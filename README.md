@@ -1,6 +1,6 @@
 # cmdr-go-starter
 
-![CI](https://github.com/hedzr/cmdr-go-starter/workflows/CI/badge.svg)
+[![Go](https://github.com/hedzr/cmdr-go-starter/actions/workflows/go.yml/badge.svg)](https://github.com/hedzr/cmdr-go-starter/actions/workflows/go.yml)
 
 A template repository to build your first app based [cmdr](https://github.com/hedzr/cmdr).
 
