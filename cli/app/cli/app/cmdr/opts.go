@@ -1,5 +1,3 @@
-// Copyright © 2021 Hedzr Studio.
-
 package cmdrrel
 
 import "github.com/hedzr/cmdr"

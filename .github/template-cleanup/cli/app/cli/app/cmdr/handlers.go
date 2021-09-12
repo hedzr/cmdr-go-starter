@@ -1,8 +1,8 @@
 package cmdrrel
 
 import (
-	"cmdr-starter/cli/app"
-	"cmdr-starter/internal"
+	"github.com/%REPOSITORY%/cli/app"
+	"github.com/%REPOSITORY%/internal"
 	"fmt"
 	"github.com/hedzr/cmdr"
 	"github.com/hedzr/cmdr/conf"

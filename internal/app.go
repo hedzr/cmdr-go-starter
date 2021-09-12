@@ -1,5 +1,3 @@
-// Copyright © 2021 Hedzr Studio.
-
 package internal
 
 import (

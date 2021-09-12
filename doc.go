@@ -1,8 +1,3 @@
-// Copyright © 2021 Hedzr Yeh.
-// All Rights Reserved.
-// These codes and documentations are reserved for
-// non-commercial and private purpose.
-
 package cmdrseries
 
 // THIS FILE IS NEVER USED.
