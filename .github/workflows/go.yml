@@ -139,6 +139,10 @@ jobs:
 
       - name: Build
         run: |
+          APP_NAME="${GITHUB_REPOSITORY##*/}"
+          APP_NAME=$(echo $APP_NAME | sed 's/[go-]//g' | sed 's/[-go]//g' | tr '[:upper:]' '[:lower:]')
+          ACTOR=$(echo $GITHUB_ACTOR | tr '[:upper:]' '[:lower:]')
+          #
           export GOSUMDB=off
           export GIT_REVISION="$(git rev-parse --short HEAD)"
           export GOVERSION="$(go version)"
@@ -164,8 +168,8 @@ jobs:
             for GOOS in windows linux darwin; do
               for GOARCH in amd64; do
                 suf=; if [[ $GOOS == "windows" ]]; then suf=".exe"; fi
-                go build -v -ldflags "$LDFLAGS" -o ./bin/$app-$GOOS-$GOARCH$suf ./$dir/$app/$dir/$app
-                gzip -f ./bin/$app-$GOOS-$GOARCH$suf
+                go build -v -ldflags "$LDFLAGS" -o ./bin/$APP_NAME-$GOOS-$GOARCH$suf ./$dir/$app/$dir/$app
+                gzip -f ./bin/$APP_NAME-$GOOS-$GOARCH$suf
               done
             done
           done
