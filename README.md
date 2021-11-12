@@ -40,6 +40,7 @@ A template repository to build your first app based [cmdr](https://github.com/he
 To run the CLI app:
 
 ```bash
+# go install -v github.com/swaggo/swag/cmd/swag
 go generate ./...          # run it once at least, for gen the swagger-doc files from skeletons
 go run ./cli/app/cli/app   # build the mainly main.go
 ```
