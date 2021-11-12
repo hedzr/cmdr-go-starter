@@ -16,7 +16,7 @@ jobs:
   test:
     strategy:
       matrix:
-        go-version: [1.14.x] # 1.11.x, 1.12.x, 1.13.x,
+        go-version: [1.16.x] # 1.11.x, 1.12.x, 1.13.x,
         #os: [ubuntu-latest, macos-latest, windows-latest]
         os: [ubuntu-latest]
       fail-fast: false
@@ -138,6 +138,7 @@ jobs:
           docker push $ACTOR/$IMAGE_NAME:latest
 
       - name: Build
+        if: startsWith(github.ref, 'refs/tags/v')
         run: |
           APP_NAME="${GITHUB_REPOSITORY##*/}"
           APP_NAME=$(echo $APP_NAME | sed 's/[go-]//g' | sed 's/[-go]//g' | tr '[:upper:]' '[:lower:]')
@@ -165,11 +166,31 @@ jobs:
           # for app in app1 app2 app3 ...; do
           for app in app ; do
           for dir in cli; do
-            for GOOS in windows linux darwin; do
+            for GOOS in windows; do
               for GOARCH in amd64; do
                 suf=; if [[ $GOOS == "windows" ]]; then suf=".exe"; fi
-                go build -v -ldflags "$LDFLAGS" -o ./bin/$APP_NAME-$GOOS-$GOARCH$suf ./$dir/$app/$dir/$app
-                gzip -f ./bin/$APP_NAME-$GOOS-$GOARCH$suf
+                GOOS=$GOOS GOARCH=$GOARCH go build -v -ldflags "$LDFLAGS" -o ./bin/$APP_NAME$suf ./$dir/$app/$dir/$app
+                chmod +x ./bin/$APP_NAME$suf
+                tar -czf ./bin/$APP_NAME-$GOOS-$GOARCH$suf.tgz ./bin/$APP_NAME$suf -Cci etc
+                rm -f ./bin/$APP_NAME$suf
+              done
+            done
+            for GOOS in linux; do
+              for GOARCH in amd64; do
+                suf=; if [[ $GOOS == "windows" ]]; then suf=".exe"; fi
+                GOOS=$GOOS GOARCH=$GOARCH go build -v -ldflags "$LDFLAGS" -o ./bin/$APP_NAME$suf ./$dir/$app/$dir/$app
+                chmod +x ./bin/$APP_NAME$suf
+                tar -czf ./bin/$APP_NAME-$GOOS-$GOARCH$suf.tgz ./bin/$APP_NAME$suf -Cci etc
+                rm -f ./bin/$APP_NAME$suf
+              done
+            done
+            for GOOS in darwin; do
+              for GOARCH in amd64 arm64; do
+                suf=; if [[ $GOOS == "windows" ]]; then suf=".exe"; fi
+                GOOS=$GOOS GOARCH=$GOARCH go build -v -ldflags "$LDFLAGS" -o ./bin/$APP_NAME$suf ./$dir/$app/$dir/$app
+                chmod +x ./bin/$APP_NAME$suf
+                tar -czf ./bin/$APP_NAME-$GOOS-$GOARCH$suf.tgz ./bin/$APP_NAME$suf -Cci etc
+                rm -f ./bin/$APP_NAME$suf
               done
             done
           done
@@ -193,27 +214,27 @@ jobs:
           file_glob: true
           #body:
 
-      # - name: Create Release
-      #   id: create_release
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     tag_name: ${{ github.ref }}
-      #     release_name: Release ${{ github.ref }}
-      #     draft: false
-      #     prerelease: false
-      #
-      # - name: Upload Release Asset
-      #   id: upload-release-asset
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-      #     asset_path: bin/*
-      #     asset_name: my-artifact.zip
-      #     asset_content_type: application/zip
+  #      - name: Create Release
+  #        id: create_release
+  #        uses: actions/create-release@v1
+  #        env:
+  #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #        with:
+  #          tag_name: ${{ github.ref }}
+  #          release_name: Release ${{ github.ref }}
+  #          draft: false
+  #          prerelease: false
+  #
+  #      - name: Upload Release Asset
+  #        id: upload-release-asset
+  #        uses: actions/upload-release-asset@v1
+  #        env:
+  #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #        with:
+  #          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+  #          asset_path: bin/*
+  #          asset_name: my-artifact.zip
+  #          asset_content_type: application/zip
 
   # notifies coveralls that all test jobs are finished
   finish:
