@@ -96,35 +96,46 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
 
-      # - name: Docker Build
-      #   #if: startsWith(github.ref, 'refs/tags/v') || contains(github.ref, '/master')
-      #   if: startsWith(github.ref, 'refs/tags/v')
-      #   env:
-      #     HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
-      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     IMAGE_NAME: cmdr-fluent
-      #     IMAGE_TAG:
-      #   run: |
-      #     IMAGE_TAG=${GITHUB_REF#*/}
-      #     IMAGE_TAG=${IMAGE_TAG#*/}
-      #     IMAGE_TAG=$(echo $IMAGE_TAG | sed -e "s#^v##")
-      #     echo "Using IMAGE_TAG: $IMAGE_TAG"
-      #     docker build \
-      #       -t docker.pkg.github.com/hedzr/cmdr/$IMAGE_NAME:$IMAGE_TAG \
-      #       -t docker.pkg.github.com/hedzr/cmdr/$IMAGE_NAME:latest \
-      #       -t hedzr/$IMAGE_NAME:$IMAGE_TAG \
-      #       -t hedzr/$IMAGE_NAME:latest \
-      #       .
-      #     echo $GH_TOKEN | docker login docker.pkg.github.com -u hedzr --password-stdin
-      #     # docker tag IMAGE_ID docker.pkg.github.com/hedzr/cmdr/$IMAGE_NAME:$VERSION
-      #     docker push docker.pkg.github.com/hedzr/cmdr/$IMAGE_NAME:$IMAGE_TAG
-      #     docker push docker.pkg.github.com/hedzr/cmdr/$IMAGE_NAME:latest
-      #     #
-      #     echo $HUB_TOKEN | docker login -u hedzr --password-stdin
-      #     # docker tag docker.pkg.github.com/hedzr/cmdr/$IMAGE_NAME:latest hedzr/$IMAGE_NAME:$IMAGE_TAG
-      #     # docker tag docker.pkg.github.com/hedzr/cmdr/$IMAGE_NAME:latest hedzr/$IMAGE_NAME:latest
-      #     docker push hedzr/$IMAGE_NAME:$IMAGE_TAG
-      #     docker push hedzr/$IMAGE_NAME:latest
+      - name: Docker Build
+        #if: startsWith(github.ref, 'refs/tags/v') || contains(github.ref, '/master')
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          IMAGE_NAME: faker
+          IMAGE_TAG:
+          PORT:
+          VERSION:
+        run: |
+          IMAGE_NAME="${GITHUB_REPOSITORY##*/}"
+          IMAGE_NAME=$(echo $IMAGE_NAME | sed 's/[go-]//g' | sed 's/[-go]//g' | tr '[:upper:]' '[:lower:]')
+          ACTOR=$(echo $GITHUB_ACTOR | tr '[:upper:]' '[:lower:]')
+          #
+          IMAGE_TAG=${GITHUB_REF#*/}
+          IMAGE_TAG=${IMAGE_TAG#*/}
+          IMAGE_TAG=$(echo $IMAGE_TAG | sed -e "s#^v##")
+          echo "Using IMAGE_TAG: $IMAGE_TAG"
+          # export VERSION="$(grep -E "Version[ \t]+=[ \t]+" doc.go|grep -Eo "[0-9.]+")"
+          docker build -f app.Dockerfile \
+            --build-arg APPNAME=$IMAGE_NAME \
+            --build-arg VERSION=$VERSION \
+            --build-arg PORT=$PORT \
+            --build-arg GOPROXY=https://goproxy.io,direct \
+            -t docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:$IMAGE_TAG \
+            -t docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:latest \
+            -t $ACTOR/$IMAGE_NAME:$IMAGE_TAG \
+            -t $ACTOR/$IMAGE_NAME:latest \
+            .
+          echo $GH_TOKEN | docker login docker.pkg.github.com -u hedzr --password-stdin
+          # docker tag IMAGE_ID docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:$VERSION
+          docker push docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:$IMAGE_TAG
+          docker push docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:latest
+          #
+          echo $HUB_TOKEN | docker login -u hedzr --password-stdin
+          # docker tag docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:latest hedzr/$IMAGE_NAME:$IMAGE_TAG
+          # docker tag docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:latest hedzr/$IMAGE_NAME:latest
+          docker push $ACTOR/$IMAGE_NAME:$IMAGE_TAG
+          docker push $ACTOR/$IMAGE_NAME:latest
 
       - name: Build
         run: |
