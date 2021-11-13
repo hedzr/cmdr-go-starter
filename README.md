@@ -56,6 +56,11 @@ make info    # print and review the golang build env
 make build
 ```
 
+## Status
+
+- cmdr v1.9.1+
+- 
+
 ## LICENSE
 
 MIT
