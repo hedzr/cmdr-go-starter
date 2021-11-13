@@ -16,6 +16,6 @@ require (
 	github.com/hedzr/cmdr-addons v1.9.1
 	github.com/hedzr/log v1.3.22
 	github.com/hedzr/logex v1.3.22
-	github.com/swaggo/swag v1.7.1
+	github.com/swaggo/swag v1.7.4
 	gopkg.in/hedzr/errors.v2 v2.1.5
 )
