@@ -12,8 +12,8 @@ go 1.16
 
 require (
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
-	github.com/hedzr/cmdr v1.9.0
-	github.com/hedzr/cmdr-addons v1.9.0
+	github.com/hedzr/cmdr v1.9.1
+	github.com/hedzr/cmdr-addons v1.9.1
 	github.com/hedzr/log v1.3.22
 	github.com/hedzr/logex v1.3.22
 	github.com/swaggo/swag v1.7.1
