@@ -9,6 +9,8 @@ app:
   version-sim:
   version:
 
+  your-starter:
+    debug: false
 
 
 

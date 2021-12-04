@@ -53,6 +53,11 @@ jobs:
           cp -R .github/template-cleanup/* .
           # cp -R src/main/kotlin/org/jetbrains/plugins/template/* src/main/kotlin/${GROUP//.//}/
 
+          # mv config files
+          find ./ci/etc/your-starter/* -type f -exec sed -i "s/your-starter/$NAME/g" {} +
+          mv ./ci/etc/your-starter/your-starter.yml ./ci/etc/$NAME/$NAME.yml
+          mv ./ci/etc/your-starter ./ci/etc/$NAME
+
           # Cleanup
           rm -rf \
             .github/readme \
