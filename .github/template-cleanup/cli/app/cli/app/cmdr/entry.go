@@ -35,13 +35,13 @@ $ {{.AppName}} --help
 	defaultTraceEnabled  = true
 	defaultDebugEnabled  = true
 	defaultLoggerBackend = "logrus"
-	defaultLoggerLevel   = "debug"
+	defaultLoggerLevel   = "debug"  // "info" for release version
 )
 
 func Entry() {
 
 	if err := cmdr.Exec(buildRootCmd(),
-		trace.WithTraceEnable(defaultTraceEnabled),
+		//trace.WithTraceEnable(defaultTraceEnabled),
 		cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler),
 		cmdr.WithLogx(build.New(build.NewLoggerConfigWith(defaultDebugEnabled, defaultLoggerBackend, defaultLoggerLevel))),
 
@@ -53,10 +53,10 @@ func Entry() {
 		// server.WithCmdrDaemonSupport(),
 		// server.WithCmdrHook(),
 
-		optHideGenerateCmd,
-		//optAddTraceOption,
-		//optAddServerExtOption,
-		pprof.GetCmdrProfilingOptions(),
+		//optHideGenerateCmd,
+		////optAddTraceOption,
+		////optAddServerExtOption,
+		//pprof.WithCmdrProfilingOptions(),
 	); err != nil {
 		log.Fatalf("error occurs in app running: %+v\n", err)
 	}
