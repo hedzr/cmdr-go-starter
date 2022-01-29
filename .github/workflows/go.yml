@@ -126,13 +126,13 @@ jobs:
             -t $ACTOR/$IMAGE_NAME:$IMAGE_TAG \
             -t $ACTOR/$IMAGE_NAME:latest \
             .
-          echo $GH_TOKEN | docker login docker.pkg.github.com -u hedzr --password-stdin
+          echo $GH_TOKEN | docker login docker.pkg.github.com -u $ACTOR --password-stdin
           # docker tag IMAGE_ID docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:$VERSION
           docker push docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:$IMAGE_TAG
           docker push docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:latest
           #
           if [ "$HUB_TOKEN" != ""]; then
-          echo $HUB_TOKEN | docker login -u hedzr --password-stdin
+          echo $HUB_TOKEN | docker login -u $ACTOR --password-stdin
           # docker tag docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:latest hedzr/$IMAGE_NAME:$IMAGE_TAG
           # docker tag docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:latest hedzr/$IMAGE_NAME:latest
           docker push $ACTOR/$IMAGE_NAME:$IMAGE_TAG
@@ -167,7 +167,7 @@ jobs:
           # go install -v github.com/swaggo/swag/cmd/swag
           # go generate ./...
           # for app in app1 app2 app3 ...; do
-          for app in app ; do
+          for app in $(ls -b ./cli) ; do
           for dir in cli; do
             for GOOS in windows linux darwin; do
               for GOARCH in amd64 arm64; do
