@@ -1,8 +1,7 @@
-package cmdrrel
+package cmdr
 
 import (
-	"cmdr-starter/cli/app"
-	"cmdr-starter/internal"
+	"github.com/%REPOSITORY%/internal"
 	"fmt"
 	"github.com/hedzr/cmdr"
 	"github.com/hedzr/cmdr/conf"
@@ -79,8 +78,8 @@ func onServerPreStart(cmd *cmdr.Command, args []string) (err error) {
 
 	cmdr.Logger.Debugf("onServerPreStart")
 
-	cmdr.Set("app-module-name", app.AppModuleName)
-	cmdr.Set("app-title", app.AppTitle)
+	//cmdr.Set("app-module-name", AppModuleName)
+	//cmdr.Set("app-title", AppTitle)
 	err = internal.App().Init(cmd, args)
 	return
 }

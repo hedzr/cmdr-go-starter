@@ -1,4 +1,4 @@
-package cmdrrel
+package cmdr
 
 import "github.com/hedzr/cmdr"
 

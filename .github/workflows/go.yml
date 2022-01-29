@@ -39,7 +39,7 @@ jobs:
           GOSUMDB=off go mod download
           # go install -v github.com/swaggo/swag/cmd/swag
           # go generate ./...
-          go build -v -o main ./cli/app/cli/app/
+          go build -v -o main ./cli/...
           rm main
           go test -v ./...
 
@@ -52,7 +52,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.16.x
+          go-version: 1.17.x
       - name: Checkout code
         uses: actions/checkout@v2
         #with:
@@ -84,7 +84,7 @@ jobs:
       - name: Install Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.16.x
+          go-version: 1.17.x
       - name: Checkout code
         uses: actions/checkout@v2
         #with:
@@ -173,7 +173,7 @@ jobs:
             for GOOS in windows linux darwin; do
               for GOARCH in amd64 arm64; do
                 suf=; if [[ $GOOS == "windows" ]]; then suf=".exe"; if [ "$GOARCH" == "arm64" ]; then GOARCH=arm; fi; fi
-                GOOS=$GOOS GOARCH=$GOARCH go build -v -ldflags "$LDFLAGS" -o ./bin/$APP_NAME$suf ./$dir/$app/$dir/$app
+                GOOS=$GOOS GOARCH=$GOARCH go build -v -ldflags "$LDFLAGS" -o ./bin/$APP_NAME$suf ./$dir/$app
                 chmod +x ./bin/$APP_NAME$suf
                 if [[ $GOOS == "windows" ]]; then
                   7z a ./bin/$APP_NAME-$GOOS-$GOARCH$suf.7z ./bin/$APP_NAME$suf
@@ -227,15 +227,15 @@ jobs:
   #          asset_name: my-artifact.zip
   #          asset_content_type: application/zip
 
-  # notifies coveralls that all test jobs are finished
-  finish:
-    name: Finish
-    needs: coverage
-    runs-on: ubuntu-latest
-    steps:
-      - uses: shogo82148/actions-goveralls@v1
-        with:
-          parallel-finished: true
+#  # notifies coveralls that all test jobs are finished
+#  finish:
+#    name: Finish
+#    needs: coverage
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: shogo82148/actions-goveralls@v1
+#        with:
+#          parallel-finished: true
 
 
 

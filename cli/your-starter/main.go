@@ -1,7 +1,7 @@
 package main
 
 import (
-	cmdrrel "github.com/%REPOSITORY%/cli/app/cli/app/cmdr"
+	cmdrrel "cmdr-starter/cli/your-starter/cmdr"
 )
 
 func init() {

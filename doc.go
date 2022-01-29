@@ -1,4 +1,4 @@
-package cmdrseries
+package your_starter
 
 // THIS FILE IS NEVER USED.
 //

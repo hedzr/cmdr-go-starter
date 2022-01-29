@@ -1,7 +1,6 @@
-package cmdrrel
+package cmdr
 
 import (
-	"cmdr-starter/cli/app"
 	"cmdr-starter/internal"
 	"cmdr-starter/internal/core"
 	"fmt"
@@ -17,9 +16,9 @@ import (
 
 const (
 	// appName   = "%NAME%"
-	copyright = "cmdr-starter - cmdr series"
-	desc      = "cmdr-starter is an effective devops tool. It make an demo application for `cmdr`."
-	longDesc  = "cmdr-starter is an effective devops tool. It make an demo application for `cmdr`."
+	copyright = "%NAME% - cmdr series"
+	desc      = "%NAME% is an effective devops tool. It make an demo application for `cmdr`."
+	longDesc  = "%NAME% is an effective devops tool. It make an demo application for `cmdr`."
 	examples  = `
 $ {{.AppName}} gen shell [--bash|--zsh|--auto]
   generate bash/shell completion scripts
@@ -35,7 +34,7 @@ $ {{.AppName}} --help
 	defaultTraceEnabled  = true
 	defaultDebugEnabled  = true
 	defaultLoggerBackend = "logrus"
-	defaultLoggerLevel   = "debug"
+	defaultLoggerLevel   = "info"
 )
 
 func Entry() {
@@ -78,7 +77,7 @@ func dumpStacks() {
 }
 
 func buildRootCmd() (rootCmd *cmdr.RootCommand) {
-	root := cmdr.Root(app.AppName, app.Version).
+	root := cmdr.Root(AppName, Version).
 		//AddGlobalPreAction(func(cmd *cmdr.Command, args []string) (err error) {
 		//	// fmt.Printf("# global pre-action 1, curr-dir: %v\n", cmdr.GetCurrentDir())
 		//	cmdr.Set("enable-ueh", true)
@@ -94,7 +93,7 @@ func buildRootCmd() (rootCmd *cmdr.RootCommand) {
 		//AddGlobalPostAction(func(cmd *cmdr.Command, args []string) {
 		//	//fmt.Println("# global post-action 2")
 		//}).
-		Copyright(copyright, "cmdr-go-starter Authors").
+		Copyright(copyright, "your-starter Authors").
 		Description(desc, longDesc).
 		Examples(examples)
 	rootCmd = root.RootCommand()

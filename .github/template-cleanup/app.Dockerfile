@@ -72,7 +72,7 @@ RUN export GOVER=$(go version) \
     && echo "Using APPNAME=$APPNAME VERSION=$VERSION" \
     && CGO_ENABLED=0 go build -v -tags docker -tags k8s,istio -tags cmdr-apps \
        -ldflags "$LDFLAGS" \
-       -o $TGT/var/lib/$APPNAME/$APPNAME ./cli/app/cli/app
+       -o $TGT/var/lib/$APPNAME/$APPNAME ./cli/%NAME%/
 RUN ls -la $TGT $TGT/var/lib/$APPNAME $TGT/etc/$APPNAME
 # RUN ldd --help
 # RUN ldd $TGT/var/lib/$APPNAME/$APPNAME   # need musl-utils & musl-dev

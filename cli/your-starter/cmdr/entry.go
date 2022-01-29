@@ -1,9 +1,8 @@
-package cmdrrel
+package cmdr
 
 import (
-	"github.com/%REPOSITORY%/cli/app"
-	"github.com/%REPOSITORY%/internal"
-	"github.com/%REPOSITORY%/internal/core"
+	"cmdr-starter/internal"
+	"cmdr-starter/internal/core"
 	"fmt"
 	"github.com/hedzr/cmdr"
 	"github.com/hedzr/cmdr-addons/pkg/plugins/trace"
@@ -17,9 +16,9 @@ import (
 
 const (
 	// appName   = "%NAME%"
-	copyright = "%NAME% - cmdr series"
-	desc      = "%NAME% is an effective devops tool. It make an demo application for `cmdr`."
-	longDesc  = "%NAME% is an effective devops tool. It make an demo application for `cmdr`."
+	copyright = "cmdr-starter - cmdr series"
+	desc      = "cmdr-starter is an effective devops tool. It make an demo application for `cmdr`."
+	longDesc  = "cmdr-starter is an effective devops tool. It make an demo application for `cmdr`."
 	examples  = `
 $ {{.AppName}} gen shell [--bash|--zsh|--auto]
   generate bash/shell completion scripts
@@ -35,13 +34,13 @@ $ {{.AppName}} --help
 	defaultTraceEnabled  = true
 	defaultDebugEnabled  = true
 	defaultLoggerBackend = "logrus"
-	defaultLoggerLevel   = "debug"  // "info" for release version
+	defaultLoggerLevel   = "debug"
 )
 
 func Entry() {
 
 	if err := cmdr.Exec(buildRootCmd(),
-		//trace.WithTraceEnable(defaultTraceEnabled),
+		trace.WithTraceEnable(defaultTraceEnabled),
 		cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler),
 		cmdr.WithLogx(build.New(build.NewLoggerConfigWith(defaultDebugEnabled, defaultLoggerBackend, defaultLoggerLevel))),
 
@@ -53,10 +52,10 @@ func Entry() {
 		// server.WithCmdrDaemonSupport(),
 		// server.WithCmdrHook(),
 
-		//optHideGenerateCmd,
-		////optAddTraceOption,
-		////optAddServerExtOption,
-		//pprof.WithCmdrProfilingOptions(),
+		optHideGenerateCmd,
+		//optAddTraceOption,
+		//optAddServerExtOption,
+		pprof.GetCmdrProfilingOptions(),
 	); err != nil {
 		log.Fatalf("error occurs in app running: %+v\n", err)
 	}
@@ -78,7 +77,7 @@ func dumpStacks() {
 }
 
 func buildRootCmd() (rootCmd *cmdr.RootCommand) {
-	root := cmdr.Root(app.AppName, app.Version).
+	root := cmdr.Root(AppName, Version).
 		//AddGlobalPreAction(func(cmd *cmdr.Command, args []string) (err error) {
 		//	// fmt.Printf("# global pre-action 1, curr-dir: %v\n", cmdr.GetCurrentDir())
 		//	cmdr.Set("enable-ueh", true)
@@ -94,7 +93,7 @@ func buildRootCmd() (rootCmd *cmdr.RootCommand) {
 		//AddGlobalPostAction(func(cmd *cmdr.Command, args []string) {
 		//	//fmt.Println("# global post-action 2")
 		//}).
-		Copyright(copyright, "%USER%").
+		Copyright(copyright, "your-starter Authors").
 		Description(desc, longDesc).
 		Examples(examples)
 	rootCmd = root.RootCommand()
