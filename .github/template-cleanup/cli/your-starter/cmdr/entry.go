@@ -2,8 +2,8 @@ package cmdr
 
 import (
 	"fmt"
-	"github.com/$REPOSITORY%/internal"
-	"github.com/$REPOSITORY%/internal/core"
+	"github.com/%REPOSITORY%/internal"
+	"github.com/%REPOSITORY%/internal/core"
 	"github.com/hedzr/cmdr"
 	"github.com/hedzr/cmdr-addons/pkg/plugins/trace"
 	"github.com/hedzr/cmdr/plugin/pprof"
