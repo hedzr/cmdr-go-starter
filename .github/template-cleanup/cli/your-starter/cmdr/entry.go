@@ -1,9 +1,9 @@
 package cmdr
 
 import (
-	"cmdr-starter/internal"
-	"cmdr-starter/internal/core"
 	"fmt"
+	"github.com/$REPOSITORY%/internal"
+	"github.com/$REPOSITORY%/internal/core"
 	"github.com/hedzr/cmdr"
 	"github.com/hedzr/cmdr-addons/pkg/plugins/trace"
 	"github.com/hedzr/cmdr/plugin/pprof"
@@ -93,7 +93,7 @@ func buildRootCmd() (rootCmd *cmdr.RootCommand) {
 		//AddGlobalPostAction(func(cmd *cmdr.Command, args []string) {
 		//	//fmt.Println("# global post-action 2")
 		//}).
-		Copyright(copyright, "your-starter Authors").
+		Copyright(copyright, "%NAME% Authors").
 		Description(desc, longDesc).
 		Examples(examples)
 	rootCmd = root.RootCommand()
