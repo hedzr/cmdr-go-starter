@@ -4,7 +4,7 @@ import (
 	"github.com/hedzr/cmdr"
 	"github.com/hedzr/cmdr/conf"
 	"github.com/hedzr/log"
-	"github.com/hedzr/log/basics"
+	"github.com/hedzr/log/closers"
 	"gopkg.in/hedzr/errors.v2"
 	"runtime"
 	"sync"
@@ -34,13 +34,13 @@ func (s *GlobalApp) AppModuleName() string          { return cmdr.GetStringR("ap
 
 func (s *GlobalApp) Close() {
 	log.Debug("* *App shutting down ...")
-	s.Basic.Close()
+	s.doShutdownStuffs()
 }
 
 // ---------------------------------------------
 
 type GlobalApp struct {
-	basics.Basic
+	//basics.Basic
 
 	muInit sync.RWMutex
 	//dbx    dbl.DB
@@ -66,6 +66,10 @@ func init() {
 
 // ---------------------------------------------
 
+func (s *GlobalApp) doShutdownStuffs() {
+	//
+}
+
 func (s *GlobalApp) Init(cmd *cmdr.Command, args []string) (err error) {
 	// initialize all infrastructures here, such as: DB, Cache, MQ, ...
 
@@ -82,6 +86,8 @@ func (s *GlobalApp) Init(cmd *cmdr.Command, args []string) (err error) {
 	// TODO add your basic components initializations here
 
 	err = ce.Error()
+
+	closers.RegisterPeripheral(s) // enables auto-close behavior (with cmdr & closers supports)
 	return
 }
 

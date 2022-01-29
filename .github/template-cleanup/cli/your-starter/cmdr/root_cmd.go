@@ -2,16 +2,18 @@ package cmdr
 
 import (
 	"github.com/%REPOSITORY%/internal/core"
+	"cmdr-starter/internal/core"
 	"github.com/hedzr/cmdr"
 )
 
 func buildRootCmd() (rootCmd *cmdr.RootCommand) {
 	root := cmdr.Root(appName, version).
-		//AddGlobalPreAction(func(cmd *cmdr.Command, args []string) (err error) {
-		//	// fmt.Printf("# global pre-action 1, curr-dir: %v\n", cmdr.GetCurrentDir())
-		//	cmdr.Set("enable-ueh", true)
-		//	return
-		//}).
+		AddGlobalPreAction(func(cmd *cmdr.Command, args []string) (err error) {
+			// fmt.Printf("# global pre-action 1, curr-dir: %v\n", cmdr.GetCurrentDir())
+			// cmdr.Set("enable-ueh", true)
+			err = internal.App().Init(cmd, args) // App() will be auto-closed
+			return
+		}).
 		//AddGlobalPreAction(func(cmd *cmdr.Command, args []string) (err error) {
 		//	//fmt.Printf("# global pre-action 2, exe-path: %v\n", cmdr.GetExecutablePath())
 		//	return
@@ -22,7 +24,7 @@ func buildRootCmd() (rootCmd *cmdr.RootCommand) {
 		//AddGlobalPostAction(func(cmd *cmdr.Command, args []string) {
 		//	//fmt.Println("# global post-action 2")
 		//}).
-		Copyright(copyright, "hedzr").
+		Copyright(copyright, "%NAME% Authors").
 		Description(desc, longDesc).
 		Examples(examples)
 	rootCmd = root.RootCommand()
@@ -39,5 +41,6 @@ func buildRootCmd() (rootCmd *cmdr.RootCommand) {
 	panicTest(root)
 
 	//pprof.AttachToCmdr(root.RootCmdOpt())
+
 	return
 }

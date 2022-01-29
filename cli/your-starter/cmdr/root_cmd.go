@@ -1,17 +1,19 @@
 package cmdr
 
 import (
+	"cmdr-starter/internal"
 	"cmdr-starter/internal/core"
 	"github.com/hedzr/cmdr"
 )
 
 func buildRootCmd() (rootCmd *cmdr.RootCommand) {
 	root := cmdr.Root(appName, version).
-		//AddGlobalPreAction(func(cmd *cmdr.Command, args []string) (err error) {
-		//	// fmt.Printf("# global pre-action 1, curr-dir: %v\n", cmdr.GetCurrentDir())
-		//	cmdr.Set("enable-ueh", true)
-		//	return
-		//}).
+		AddGlobalPreAction(func(cmd *cmdr.Command, args []string) (err error) {
+			// fmt.Printf("# global pre-action 1, curr-dir: %v\n", cmdr.GetCurrentDir())
+			// cmdr.Set("enable-ueh", true)
+			err = internal.App().Init(cmd, args) // App() will be auto-closed
+			return
+		}).
 		//AddGlobalPreAction(func(cmd *cmdr.Command, args []string) (err error) {
 		//	//fmt.Printf("# global pre-action 2, exe-path: %v\n", cmdr.GetExecutablePath())
 		//	return
@@ -39,5 +41,6 @@ func buildRootCmd() (rootCmd *cmdr.RootCommand) {
 	panicTest(root)
 
 	//pprof.AttachToCmdr(root.RootCmdOpt())
+
 	return
 }
