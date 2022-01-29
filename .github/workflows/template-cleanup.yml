@@ -34,15 +34,15 @@ jobs:
           ACTOR=$(echo $GITHUB_ACTOR | tr '[:upper:]' '[:lower:]')
           GROUP="com.github.$ACTOR.$SAFE_NAME"
 
+          mv .github/template-cleanup/cli/your-starter .github/template-cleanup/cli/$NAME
+          mv ./cli/your-starter ./cli/$NAME
+
           # Replace placeholders in the template-cleanup files
           find .github/template-cleanup/* -type f -exec sed -i "s/%NAME%/$NAME/g" {} +
           find .github/template-cleanup/* -type f -exec sed -i "s/%USER%/$ACTOR/g" {} +
           find .github/template-cleanup/* -type f -exec sed -i "s/%REPOSITORY%/${GITHUB_REPOSITORY/\//\\/}/g" {} +
           find .github/template-cleanup/* -type f -exec sed -i "s/%GROUP%/$GROUP/g" {} +
           
-          mv .github/template-cleanup/cli/your-starter .github/template-cleanup/cli/$NAME
-          mv ./cli/your-starter ./cli/$NAME
-
           # Replace template package name in project files with $GROUP
           #find docs -type f -exec sed -i "s/org.jetbrains.plugins.template/$GROUP/g" {} +
           #find docs -type f -exec sed -i "s/Template/$NAME/g" {} +
