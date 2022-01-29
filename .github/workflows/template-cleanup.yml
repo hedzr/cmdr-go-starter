@@ -58,8 +58,8 @@ jobs:
 
           # mv config files
           find ./ci/etc/your-starter/* -type f -exec sed -i "s/your-starter/$NAME/g" {} +
-          mv ./ci/etc/your-starter/your-starter.yml ./ci/etc/$NAME/$NAME.yml
           mv ./ci/etc/your-starter ./ci/etc/$NAME
+          mv ./ci/etc/$NAME/your-starter.yml ./ci/etc/$NAME/$NAME.yml
 
           # Cleanup
           rm -rf \
