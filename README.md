@@ -63,4 +63,4 @@ make build
 
 ## LICENSE
 
-MIT
+Apache 2.0
