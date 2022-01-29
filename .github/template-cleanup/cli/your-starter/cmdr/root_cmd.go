@@ -1,7 +1,7 @@
 package cmdr
 
 import (
-	"github.com/%REPOSITORY%/internal/core"
+	"github.com/%REPOSITORY%/internal"
 	"github.com/%REPOSITORY%/internal/core"
 	"github.com/hedzr/cmdr"
 )
