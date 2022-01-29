@@ -18,7 +18,7 @@ func init() {
 
 	options = append(options, cmdr.WithHelpTailLine(`
 # Type '-h'/'-?' or '--help' to get command help screen.
-# Star me if it's helpful: https://github.com/hedzr/your-starter
+# Star me if it's helpful: https://github.com/%REPOSITORY%
 `))
 
 	if isDebugBuild() {
@@ -51,10 +51,10 @@ func init() {
 	options = append(options, optAddTraceOption)
 	//options = append(options, optAddServerExtOpt«ion)
 
-	// allow and search '.bgo.yml' at first
-	locations := []string{".$APPNAME.yml"}
-	locations = append(locations, cmdr.GetPredefinedLocations()...)
-	options = append(options, cmdr.WithPredefinedLocations(locations...))
+	//// allow and search '.bgo.yml' at first
+	//locations := []string{".$APPNAME.yml"}
+	//locations = append(locations, cmdr.GetPredefinedLocations()...)
+	//options = append(options, cmdr.WithPredefinedLocations(locations...))
 }
 
 func isDebugBuild() bool { return isdelve.Enabled }
