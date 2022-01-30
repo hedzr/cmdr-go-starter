@@ -11,9 +11,9 @@ go 1.17
 //replace github.com/hedzr/cmdr-addons => ../53.cmdr-addons
 
 require (
-	github.com/hedzr/cmdr v1.10.6
-	github.com/hedzr/log v1.5.7
-	github.com/hedzr/logex v1.5.8
+	github.com/hedzr/cmdr v1.10.7
+	github.com/hedzr/log v1.5.9
+	github.com/hedzr/logex v1.5.9
 	gopkg.in/hedzr/errors.v2 v2.1.5
 )
 
