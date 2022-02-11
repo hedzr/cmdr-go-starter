@@ -11,10 +11,10 @@ go 1.17
 //replace github.com/hedzr/cmdr-addons => ../53.cmdr-addons
 
 require (
-	github.com/hedzr/cmdr v1.10.13
-	github.com/hedzr/log v1.5.9
-	github.com/hedzr/logex v1.5.9
-	gopkg.in/hedzr/errors.v2 v2.1.5
+	github.com/hedzr/cmdr v1.10.19
+	github.com/hedzr/log v1.5.13
+	github.com/hedzr/logex v1.5.13
+	gopkg.in/hedzr/errors.v2 v2.1.9
 )
 
 require (
@@ -27,10 +27,11 @@ require (
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
-	go.uber.org/zap v1.20.0 // indirect
-	golang.org/x/crypto v0.0.0-20220112180741-5e0467b6c7ce // indirect
-	golang.org/x/sys v0.0.0-20211103235746-7861aae1554b // indirect
-	golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1 // indirect
+	go.uber.org/zap v1.21.0 // indirect
+	golang.org/x/crypto v0.0.0-20220210151621-f4118a5b28e2 // indirect
+	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd // indirect
+	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e // indirect
+	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect

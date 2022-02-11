@@ -14,7 +14,9 @@ func init() {
 	options = append(options, cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler))
 	//cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler)
 
-	options = append(options, cmdr.WithLogx(build.New(build.NewLoggerConfigWith(defaultDebugEnabled, defaultLoggerBackend, defaultLoggerLevel, log.WithTimestamp(true, "")))))
+	options = append(options, cmdr.WithLogx(build.New(build.NewLoggerConfigWith(
+		defaultDebugEnabled, defaultLoggerBackend, defaultLoggerLevel, 
+		log.WithTimestamp(true, "")))))
 
 	options = append(options, cmdr.WithHelpTailLine(`
 # Type '-h'/'-?' or '--help' to get command help screen.
@@ -36,7 +38,7 @@ func init() {
 	// enable '--trace' command line option to toggle a internal trace mode (can be retrieved by cmdr.GetTraceMode())
 	// import "github.com/hedzr/cmdr-addons/pkg/plugins/trace"
 	// trace.WithTraceEnable(defaultTraceEnabled)
-	optAddTraceOption := cmdr.WithXrefBuildingHooks(func(root *cmdr.RootCommand, args []string) {
+	optAddTraceOption := cmdr.WithCommandSystemCustomizing(func(root *cmdr.RootCommand, args []string) {
 		cmdr.NewBool(false).
 			Titles("trace", "tr").
 			Description("enable trace mode for tcp/mqtt send/recv data dump", "").
@@ -47,7 +49,7 @@ func init() {
 			//}).
 			Group(cmdr.SysMgmtGroup).
 			AttachToRoot(root)
-	}, nil)
+	})
 	options = append(options, optAddTraceOption)
 	//options = append(options, optAddServerExtOpt«ion)
 
