@@ -14,9 +14,10 @@ func init() {
 	options = append(options, cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler))
 	//cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler)
 
-	options = append(options, cmdr.WithLogx(build.New(build.NewLoggerConfigWith(
-		defaultDebugEnabled, defaultLoggerBackend, defaultLoggerLevel, 
-		log.WithTimestamp(true, "")))))
+	options = append(options,
+		cmdr.WithLogx(build.New(build.NewLoggerConfigWith(
+			defaultDebugEnabled, defaultLoggerBackend, defaultLoggerLevel,
+			log.WithTimestamp(true, "")))))
 
 	options = append(options, cmdr.WithHelpTailLine(`
 # Type '-h'/'-?' or '--help' to get command help screen.
