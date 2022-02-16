@@ -5,7 +5,6 @@ import (
 
 	"github.com/hedzr/cmdr"
 	"github.com/hedzr/cmdr/tool"
-	"github.com/hedzr/logex"
 )
 
 func prd(key string, val interface{}, format string, params ...interface{}) {
