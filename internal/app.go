@@ -5,7 +5,7 @@ import (
 	"github.com/hedzr/cmdr/conf"
 	"github.com/hedzr/log"
 	"github.com/hedzr/log/closers"
-	"gopkg.in/hedzr/errors.v2"
+	"gopkg.in/hedzr/errors.v3"
 	"runtime"
 	"sync"
 )
@@ -78,14 +78,13 @@ func (s *GlobalApp) Init(cmd *cmdr.Command, args []string) (err error) {
 
 	s.cmd = cmd
 
-	ce := errors.NewContainer("")
+	ce := errors.New("")
+	defer ce.Defer(&err)
 	ce.Attach(s.initDB())
 	ce.Attach(s.initCache())
 	ce.Attach(s.initCron())
 
 	// TODO add your basic components initializations here
-
-	err = ce.Error()
 
 	closers.RegisterPeripheral(s) // enables auto-close behavior (with cmdr & closers supports)
 	return
