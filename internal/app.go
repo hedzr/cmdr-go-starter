@@ -5,7 +5,6 @@ import (
 	"github.com/hedzr/cmdr/conf"
 	"github.com/hedzr/log"
 	"github.com/hedzr/log/closers"
-	"gopkg.in/hedzr/errors.v3"
 	"runtime"
 	"sync"
 )
