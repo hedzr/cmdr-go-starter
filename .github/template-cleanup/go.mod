@@ -11,10 +11,10 @@ go 1.17
 //replace github.com/hedzr/cmdr-addons => ../53.cmdr-addons
 
 require (
-	github.com/hedzr/cmdr v1.10.27
-	github.com/hedzr/log v1.5.26
-	github.com/hedzr/logex v1.5.26
-	gopkg.in/hedzr/errors.v3 v3.0.3
+	github.com/hedzr/cmdr v1.10.29
+	github.com/hedzr/log v1.5.29
+	github.com/hedzr/logex v1.5.29
+	gopkg.in/hedzr/errors.v3 v3.0.10
 )
 
 require (
@@ -26,10 +26,9 @@ require (
 	go.uber.org/atomic v1.7.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
 	go.uber.org/zap v1.21.0 // indirect
-	golang.org/x/crypto v0.0.0-20220214200702-86341886e292 // indirect
-	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2 // indirect
-	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e // indirect
-	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
+	golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550 // indirect
+	golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4 // indirect
+	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
