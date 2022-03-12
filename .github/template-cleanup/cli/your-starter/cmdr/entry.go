@@ -22,9 +22,12 @@ func onUnhandledErrorHandler(err interface{}) {
 		// return
 	}
 
-	internal.App().Close()
+	// do post-processing to shut down app resources if unhandled error 
+	// occurs to avoid resources leak. NOTE that internal.App() will
+	// be closed automatically when app terminate normally.
+	// internal.App().Close()
 
-	panic(err)
+	panic(err) // re-throw it
 }
 
 func dumpStacks() {

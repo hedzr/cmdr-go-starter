@@ -11,7 +11,6 @@ func buildRootCmd() (rootCmd *cmdr.RootCommand) {
 		AddGlobalPreAction(func(cmd *cmdr.Command, args []string) (err error) {
 			// fmt.Printf("# global pre-action 1, curr-dir: %v\n", cmdr.GetCurrentDir())
 			// cmdr.Set("enable-ueh", true)
-			err = internal.App().Init(cmd, args) // App() will be auto-closed
 			return
 		}).
 		//AddGlobalPreAction(func(cmd *cmdr.Command, args []string) (err error) {
@@ -29,8 +28,8 @@ func buildRootCmd() (rootCmd *cmdr.RootCommand) {
 		Examples(examples)
 	rootCmd = root.RootCommand()
 
-	// core.AttachToCmdr(root.RootCmdOpt())
-
+	// for your biz-logic, constructing an AttachToCmdr(root *cmdr.RootCmdOpt) is recommended.
+	// see our full sample and template repo: https://github.com/hedzr/cmdr-go-starter
 	core.AttachToCmdr(root.RootCmdOpt())
 
 	// These lines are removable
@@ -41,8 +40,6 @@ func buildRootCmd() (rootCmd *cmdr.RootCommand) {
 		AttachTo(root)
 	cmdrPanic(root)
 	cmdrSoundex(root)
-
 	//pprof.AttachToCmdr(root.RootCmdOpt())
-
 	return
 }

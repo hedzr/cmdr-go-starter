@@ -3,7 +3,6 @@ package cmdr
 import (
 	"fmt"
 
-	"cmdr-starter/internal"
 	"github.com/hedzr/cmdr"
 	"github.com/hedzr/log"
 	"gopkg.in/hedzr/errors.v3"
@@ -22,9 +21,12 @@ func onUnhandledErrorHandler(err interface{}) {
 		// return
 	}
 
-	internal.App().Close()
+	// do post-processing to shut down app resources if unhandled error
+	// occurs to avoid resources leak. NOTE that internal.App() will
+	// be closed automatically when app terminate normally.
+	// internal.App().Close()
 
-	panic(err)
+	panic(err) // re-throw it
 }
 
 func dumpStacks() {

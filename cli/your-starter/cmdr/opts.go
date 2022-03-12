@@ -1,6 +1,7 @@
 package cmdr
 
 import (
+	"cmdr-starter/internal"
 	"github.com/hedzr/cmdr"
 	"github.com/hedzr/cmdr/plugin/pprof"
 	"github.com/hedzr/log"
@@ -27,6 +28,8 @@ func init() {
 	if isDebugBuild() {
 		options = append(options, pprof.GetCmdrProfilingOptions())
 	}
+
+	options = append(options, internal.NewAppOption())
 
 	//dex.WithDaemon(
 	//	svr.NewDaemon(svr.WithRouterImpl(sth.NewGinMux())),
