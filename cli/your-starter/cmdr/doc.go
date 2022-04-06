@@ -3,7 +3,7 @@ package cmdr
 //goland:noinspection GoNameStartsWithPackageName
 const (
 	appName   = "your-starter"
-	version   = "0.2.5"
+	version   = "0.2.7"
 	copyright = "your-starter - A devops tool - cmdr series"
 	desc      = "your-starter is an effective devops tool. It make an demo application for 'cmdr'"
 	longDesc  = `your-starter is an effective devops tool. It make an demo application for 'cmdr'.
