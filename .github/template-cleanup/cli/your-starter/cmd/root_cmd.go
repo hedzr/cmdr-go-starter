@@ -1,4 +1,4 @@
-package cmdr
+package cmd
 
 import (
 	"github.com/%REPOSITORY%/internal"
@@ -13,16 +13,16 @@ func buildRootCmd() (rootCmd *cmdr.RootCommand) {
 			// cmdr.Set("enable-ueh", true)
 			return
 		}).
-		//AddGlobalPreAction(func(cmd *cmdr.Command, args []string) (err error) {
-		//	//fmt.Printf("# global pre-action 2, exe-path: %v\n", cmdr.GetExecutablePath())
-		//	return
-		//}).
-		//AddGlobalPostAction(func(cmd *cmdr.Command, args []string) {
-		//	//fmt.Println("# global post-action 1")
-		//}).
-		//AddGlobalPostAction(func(cmd *cmdr.Command, args []string) {
-		//	//fmt.Println("# global post-action 2")
-		//}).
+		// AddGlobalPreAction(func(cmd *cmdr.Command, args []string) (err error) {
+		// 	//fmt.Printf("# global pre-action 2, exe-path: %v\n", cmdr.GetExecutablePath())
+		// 	return
+		// }).
+		// AddGlobalPostAction(func(cmd *cmdr.Command, args []string) {
+		// 	//fmt.Println("# global post-action 1")
+		// }).
+		// AddGlobalPostAction(func(cmd *cmdr.Command, args []string) {
+		// 	//fmt.Println("# global post-action 2")
+		// }).
 		Copyright(copyright, "%NAME% Authors").
 		Description(desc, longDesc).
 		Examples(examples)
@@ -40,6 +40,6 @@ func buildRootCmd() (rootCmd *cmdr.RootCommand) {
 		AttachTo(root)
 	cmdrPanic(root)
 	cmdrSoundex(root)
-	//pprof.AttachToCmdr(root.RootCmdOpt())
+	// pprof.AttachToCmdr(root.RootCmdOpt())
 	return
 }

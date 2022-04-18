@@ -1,7 +1,7 @@
 package main
 
 import (
-	cmdrrel "github.com/%REPOSITORY%/cli/%NAME%/cmdr"
+	cmd "github.com/%REPOSITORY%/cli/%NAME%/cmd"
 )
 
 //func init() {
@@ -9,5 +9,5 @@ import (
 //}
 
 func main() {
-	cmdrrel.Entry()
+	cmd.Entry()
 }

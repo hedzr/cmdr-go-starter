@@ -1,6 +1,6 @@
-package cmdr
+package cmd
 
-//goland:noinspection GoNameStartsWithPackageName
+// goland:noinspection GoNameStartsWithPackageName
 const (
 	appName   = "%NAME%"
 	version   = "0.2.7"

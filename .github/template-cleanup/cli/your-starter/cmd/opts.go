@@ -1,4 +1,4 @@
-package cmdr
+package cmd
 
 import (
 	"github.com/hedzr/cmdr"
@@ -12,7 +12,7 @@ var options []cmdr.ExecOption
 
 func init() {
 	options = append(options, cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler))
-	//cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler)
+	// cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler)
 
 	options = append(options,
 		cmdr.WithLogx(build.New(build.NewLoggerConfigWith(
@@ -28,11 +28,11 @@ func init() {
 		options = append(options, pprof.GetCmdrProfilingOptions())
 	}
 
-	//dex.WithDaemon(
-	//	svr.NewDaemon(svr.WithRouterImpl(sth.NewGinMux())),
-	//	dex.WithCommandsModifier(modifier),
-	//	dex.WithLoggerForward(true),
-	//),
+	// dex.WithDaemon(
+	// 	svr.NewDaemon(svr.WithRouterImpl(sth.NewGinMux())),
+	// 	dex.WithCommandsModifier(modifier),
+	// 	dex.WithLoggerForward(true),
+	// ),
 	// server.WithCmdrDaemonSupport(),
 	// server.WithCmdrHook(),
 
@@ -43,21 +43,21 @@ func init() {
 		cmdr.NewBool(false).
 			Titles("trace", "tr").
 			Description("enable trace mode for tcp/mqtt send/recv data dump", "").
-			//Action(func(cmd *cmdr.Command, args []string) (err error) {
-			//	println("trace mode on")
-			//	cmdr.SetTraceMode(true)
-			//	return
-			//}).
+			// Action(func(cmd *cmdr.Command, args []string) (err error) {
+			// 	println("trace mode on")
+			// 	cmdr.SetTraceMode(true)
+			// 	return
+			// }).
 			Group(cmdr.SysMgmtGroup).
 			AttachToRoot(root)
 	})
 	options = append(options, optAddTraceOption)
-	//options = append(options, optAddServerExtOpt«ion)
+	// options = append(options, optAddServerExtOpt«ion)
 
-	//// allow and search '.bgo.yml' at first
-	//locations := []string{".$APPNAME.yml"}
-	//locations = append(locations, cmdr.GetPredefinedLocations()...)
-	//options = append(options, cmdr.WithPredefinedLocations(locations...))
+	// // allow and search '.bgo.yml' at first
+	// locations := []string{".$APPNAME.yml"}
+	// locations = append(locations, cmdr.GetPredefinedLocations()...)
+	// options = append(options, cmdr.WithPredefinedLocations(locations...))
 }
 
 func isDebugBuild() bool { return isdelve.Enabled }
