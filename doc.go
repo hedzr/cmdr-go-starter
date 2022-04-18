@@ -1,4 +1,4 @@
-package your_starter
+package starter
 
 // THIS FILE IS NEVER USED.
 //

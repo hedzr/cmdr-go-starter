@@ -38,15 +38,13 @@ func cmdrPanic(root cmdr.OptCmd) {
 		Description("").
 		Group("Test").
 		Action(func(cmd *cmdr.Command, args []string) (err error) {
-			panic(9)
-			return
+			panic(9) //nolint:gomnd
+			return   //nolint:govet
 		}).
 		AttachTo(pa)
-
 }
 
 func cmdrSoundex(root cmdr.OptCmd) {
-
 	cmdr.NewSubCmd().Titles("soundex", "snd", "sndx", "sound").
 		Description("soundex test").
 		Group("Test").
@@ -58,5 +56,4 @@ func cmdrSoundex(root cmdr.OptCmd) {
 			return
 		}).
 		AttachTo(root)
-
 }

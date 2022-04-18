@@ -19,11 +19,11 @@ $ {{.AppName}} gen man
 $ {{.AppName}} --help
   show help screen.
 `
-	overview = ``
+	overview = `` //nolint:varcheck
 
 	zero = 0
 
-	defaultTraceEnabled  = true
+	defaultTraceEnabled  = true //nolint:varcheck
 	defaultDebugEnabled  = false
 	defaultLoggerLevel   = "info"
 	defaultLoggerBackend = "logrus"
