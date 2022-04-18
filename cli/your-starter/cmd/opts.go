@@ -1,7 +1,8 @@
-package cmdr
+package cmd
 
 import (
 	"cmdr-starter/internal"
+
 	"github.com/hedzr/cmdr"
 	"github.com/hedzr/cmdr/plugin/pprof"
 	"github.com/hedzr/log"
@@ -13,7 +14,7 @@ var options []cmdr.ExecOption
 
 func init() {
 	options = append(options, cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler))
-	//cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler)
+	// cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler)
 
 	options = append(options,
 		cmdr.WithLogx(build.New(build.NewLoggerConfigWith(
@@ -31,11 +32,11 @@ func init() {
 
 	options = append(options, internal.NewAppOption())
 
-	//dex.WithDaemon(
-	//	svr.NewDaemon(svr.WithRouterImpl(sth.NewGinMux())),
-	//	dex.WithCommandsModifier(modifier),
-	//	dex.WithLoggerForward(true),
-	//),
+	// dex.WithDaemon(
+	// 	svr.NewDaemon(svr.WithRouterImpl(sth.NewGinMux())),
+	// 	dex.WithCommandsModifier(modifier),
+	// 	dex.WithLoggerForward(true),
+	// ),
 	// server.WithCmdrDaemonSupport(),
 	// server.WithCmdrHook(),
 
@@ -46,16 +47,16 @@ func init() {
 		cmdr.NewBool(false).
 			Titles("trace", "tr").
 			Description("enable trace mode for tcp/mqtt send/recv data dump", "").
-			//Action(func(cmd *cmdr.Command, args []string) (err error) {
-			//	println("trace mode on")
-			//	cmdr.SetTraceMode(true)
-			//	return
-			//}).
+			// Action(func(cmd *cmdr.Command, args []string) (err error) {
+			// 	println("trace mode on")
+			// 	cmdr.SetTraceMode(true)
+			// 	return
+			// }).
 			Group(cmdr.SysMgmtGroup).
 			AttachToRoot(root)
 	}, nil)
 	options = append(options, optAddTraceOption)
-	//options = append(options, optAddServerExtOpt«ion)
+	// options = append(options, optAddServerExtOpt«ion)
 
 	// allow and search '.bgo.yml' at first
 	locations := []string{".$APPNAME.yml"}
@@ -65,26 +66,26 @@ func init() {
 
 func isDebugBuild() bool { return isdelve.Enabled }
 
-//var optAddTraceOption cmdr.ExecOption
-//var optAddServerExtOption cmdr.ExecOption
+// var optAddTraceOption cmdr.ExecOption
+// var optAddServerExtOption cmdr.ExecOption
 
-//func init() {
-//	//// attaches `--trace` to root command
-//	//optAddTraceOption = cmdr.WithXrefBuildingHooks(func(root *cmdr.RootCommand, args []string) {
-//	//	cmdr.NewBool(false).
-//	//		Titles("trace", "tr").
-//	//		Description("enable trace mode for tcp/mqtt send/recv data dump", "").
-//	//		AttachToRoot(root)
-//	//}, nil)
+// func init() {
+// 	//// attaches `--trace` to root command
+// 	//optAddTraceOption = cmdr.WithXrefBuildingHooks(func(root *cmdr.RootCommand, args []string) {
+// 	//	cmdr.NewBool(false).
+// 	//		Titles("trace", "tr").
+// 	//		Description("enable trace mode for tcp/mqtt send/recv data dump", "").
+// 	//		AttachToRoot(root)
+// 	//}, nil)
 //
-//	//// the following statements show you how to attach an option to a sub-command
-//	//optAddServerExtOption = cmdr.WithXrefBuildingHooks(func(root *cmdr.RootCommand, args []string) {
-//	//	serverCmd := cmdr.FindSubCommandRecursive("server", nil)
-//	//	serverStartCmd := cmdr.FindSubCommand("start", serverCmd)
-//	//	cmdr.NewInt(5100).
-//	//		Titles("vnc-server", "vnc").
-//	//		Description("start as a vnc server (just a faked demo)", "").
-//	//		Placeholder("PORT").
-//	//		AttachTo(cmdr.NewCmdFrom(serverStartCmd))
-//	//}, nil)
-//}
+// 	//// the following statements show you how to attach an option to a sub-command
+// 	//optAddServerExtOption = cmdr.WithXrefBuildingHooks(func(root *cmdr.RootCommand, args []string) {
+// 	//	serverCmd := cmdr.FindSubCommandRecursive("server", nil)
+// 	//	serverStartCmd := cmdr.FindSubCommand("start", serverCmd)
+// 	//	cmdr.NewInt(5100).
+// 	//		Titles("vnc-server", "vnc").
+// 	//		Description("start as a vnc server (just a faked demo)", "").
+// 	//		Placeholder("PORT").
+// 	//		AttachTo(cmdr.NewCmdFrom(serverStartCmd))
+// 	//}, nil)
+// }

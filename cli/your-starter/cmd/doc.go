@@ -1,4 +1,4 @@
-package cmdr
+package cmd
 
 //goland:noinspection GoNameStartsWithPackageName
 const (

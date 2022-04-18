@@ -1,7 +1,7 @@
 package main
 
 import (
-	cmdrrel "cmdr-starter/cli/your-starter/cmdr"
+	cmd "cmdr-starter/cli/your-starter/cmd"
 )
 
 func init() {
@@ -9,5 +9,5 @@ func init() {
 }
 
 func main() {
-	cmdrrel.Entry()
+	cmd.Entry()
 }

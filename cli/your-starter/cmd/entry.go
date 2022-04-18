@@ -1,4 +1,4 @@
-package cmdr
+package cmd
 
 import (
 	"fmt"
