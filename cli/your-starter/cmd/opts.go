@@ -13,7 +13,8 @@ import (
 var options []cmdr.ExecOption
 
 func init() {
-	options = append(options, cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler))
+	options = append(options, //nolint:gocritic //like
+		cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler))
 	// cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler)
 
 	options = append(options,
@@ -58,6 +59,7 @@ func init() {
 	options = append(options, optAddTraceOption)
 	// options = append(options, optAddServerExtOpt«ion)
 
+	// allow alternated locations
 	// allow and search '.bgo.yml' at first
 	locations := []string{".$APPNAME.yml"}
 	locations = append(locations, cmdr.GetPredefinedLocations()...)

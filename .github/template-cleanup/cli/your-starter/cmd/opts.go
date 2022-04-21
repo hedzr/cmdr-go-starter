@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"cmdr-starter/internal"
+
 	"github.com/hedzr/cmdr"
 	"github.com/hedzr/cmdr/plugin/pprof"
 	"github.com/hedzr/log"
@@ -11,7 +13,8 @@ import (
 var options []cmdr.ExecOption
 
 func init() {
-	options = append(options, cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler))
+	options = append(options, //nolint:gocritic //like
+		cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler))
 	// cmdr.WithUnhandledErrorHandler(onUnhandledErrorHandler)
 
 	options = append(options,
@@ -28,6 +31,8 @@ func init() {
 		options = append(options, pprof.GetCmdrProfilingOptions())
 	}
 
+	options = append(options, internal.NewAppOption())
+
 	// dex.WithDaemon(
 	// 	svr.NewDaemon(svr.WithRouterImpl(sth.NewGinMux())),
 	// 	dex.WithCommandsModifier(modifier),
@@ -39,7 +44,7 @@ func init() {
 	// enable '--trace' command line option to toggle a internal trace mode (can be retrieved by cmdr.GetTraceMode())
 	// import "github.com/hedzr/cmdr-addons/pkg/plugins/trace"
 	// trace.WithTraceEnable(defaultTraceEnabled)
-	optAddTraceOption := cmdr.WithCommandSystemCustomizing(func(root *cmdr.RootCommand, args []string) {
+	optAddTraceOption := cmdr.WithXrefBuildingHooks(func(root *cmdr.RootCommand, args []string) {
 		cmdr.NewBool(false).
 			Titles("trace", "tr").
 			Description("enable trace mode for tcp/mqtt send/recv data dump", "").
@@ -50,14 +55,15 @@ func init() {
 			// }).
 			Group(cmdr.SysMgmtGroup).
 			AttachToRoot(root)
-	})
+	}, nil)
 	options = append(options, optAddTraceOption)
 	// options = append(options, optAddServerExtOpt«ion)
 
-	// // allow and search '.bgo.yml' at first
-	// locations := []string{".$APPNAME.yml"}
-	// locations = append(locations, cmdr.GetPredefinedLocations()...)
-	// options = append(options, cmdr.WithPredefinedLocations(locations...))
+	// allow alternated locations
+	// allow and search '.%NAME%.yml' at first
+	locations := []string{".$APPNAME.yml"}
+	locations = append(locations, cmdr.GetPredefinedLocations()...)
+	options = append(options, cmdr.WithPredefinedLocations(locations...))
 }
 
 func isDebugBuild() bool { return isdelve.Enabled }
