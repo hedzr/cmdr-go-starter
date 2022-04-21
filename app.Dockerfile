@@ -65,7 +65,7 @@ ENV GOPROXY="$GOPROXY"
 RUN echo "Using GOPROXY=$GOPROXY" \
     && go mod download
 RUN export GOVER=$(go version) \
-    && export VERSION="$(grep -E 'Version[ \t]+=[ \t]+' ./cli/app/doc.go|grep -Eo '[0-9.]+')" \
+    && export VERSION="$(grep -E 'Version[ \t]+=[ \t]+' ./cli/your-starter/doc.go|grep -Eo '[0-9.]+')" \
     && export LDFLAGS="-s -w \
         	-X \"$W_PKG.Buildstamp=$BUILDTIME\" -X \"$W_PKG.Githash=$GIT_REVISION\" \
         	-X \"$W_PKG.Version=$VERSION\" -X \"$W_PKG.GoVersion=$GOVER\" " \
