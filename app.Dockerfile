@@ -50,7 +50,7 @@ WORKDIR $APP_HOME
 COPY . .
 RUN ls -la . && pwd
 RUN mkdir -p $TGT/var/lib/$APPNAME/conf.d \
-    && mkdir -p $TGT/var/run/$APPNAME $TGT/var/log/$APPNAME $TGT/etc $TGT/etc/sysconfig $TGT/etc/default \
+    && mkdir -vp $TGT/var/run/$APPNAME $TGT/var/log/$APPNAME $TGT/etc $TGT/etc/sysconfig $TGT/etc/default \
     && touch $TGT/var/lib/$APPNAME/$APPNAME.yml $TGT/etc/sysconfig/$APPNAME $TGT/etc/default/$APPNAME \
     && cp -R ./public $TGT/var/lib/$APPNAME/ \
     && cp -R ./ci/etc/$APPNAME $TGT/etc/ \
@@ -65,14 +65,14 @@ ENV GOPROXY="$GOPROXY"
 RUN echo "Using GOPROXY=$GOPROXY" \
     && go mod download
 RUN export GOVER=$(go version) \
-    && export VERSION="$(grep -E 'Version[ \t]+=[ \t]+' ./cli/your-starter/doc.go|grep -Eo '[0-9.]+')" \
+    && export VERSION="$(grep -E 'Version[ \t]+=[ \t]+' ./cli/$APPNAME/cmd/doc.go|grep -Eo '[0-9.]+')" \
     && export LDFLAGS="-s -w \
         	-X \"$W_PKG.Buildstamp=$BUILDTIME\" -X \"$W_PKG.Githash=$GIT_REVISION\" \
         	-X \"$W_PKG.Version=$VERSION\" -X \"$W_PKG.GoVersion=$GOVER\" " \
     && echo "Using APPNAME=$APPNAME VERSION=$VERSION" \
     && CGO_ENABLED=0 go build -v -tags docker -tags k8s,istio -tags cmdr-apps \
        -ldflags "$LDFLAGS" \
-       -o $TGT/var/lib/$APPNAME/$APPNAME ./cli/your-starter/
+       -o $TGT/var/lib/$APPNAME/$APPNAME ./cli/$APPNAME/
 RUN ls -la $TGT $TGT/var/lib/$APPNAME $TGT/etc/$APPNAME
 # RUN ldd --help
 # RUN ldd $TGT/var/lib/$APPNAME/$APPNAME   # need musl-utils & musl-dev
@@ -102,17 +102,17 @@ LABEL version="$VERSION"
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group
 
-ENV WF_WFS_CORE_INF_DB_DRIVER=""
-ENV WF_WFS_CORE_INF_DB_MYSQL_DSN=""
-ENV WF_WFS_CORE_INF_CACHE_DEVEL_PEERS=""
-ENV WF_WFS_CORE_INF_CACHE_DEVEL_USER=""
-ENV WF_WFS_CORE_INF_CACHE_DEVEL_PASS=""
-ENV WF_WFS_CORE_INF_PROD_DEVEL_PEERS=""
-ENV WF_WFS_CORE_INF_PROD_DEVEL_USER=""
-ENV WF_WFS_CORE_INF_PROD_DEVEL_PASS=""
-ENV WF_WFS_CORE_INF_DOCKER_DEVEL_PEERS=""
-ENV WF_WFS_CORE_INF_DOCKER_DEVEL_USER=""
-ENV WF_WFS_CORE_INF_DOCKER_DEVEL_PASS=""
+ENV APP_CORE_INF_DB_DRIVER=""
+ENV APP_CORE_INF_DB_MYSQL_DSN=""
+ENV APP_CORE_INF_CACHE_DEVEL_PEERS=""
+ENV APP_CORE_INF_CACHE_DEVEL_USER=""
+ENV APP_CORE_INF_CACHE_DEVEL_PASS=""
+ENV APP_CORE_INF_PROD_DEVEL_PEERS=""
+ENV APP_CORE_INF_PROD_DEVEL_USER=""
+ENV APP_CORE_INF_PROD_DEVEL_PASS=""
+ENV APP_CORE_INF_DOCKER_DEVEL_PEERS=""
+ENV APP_CORE_INF_DOCKER_DEVEL_USER=""
+ENV APP_CORE_INF_DOCKER_DEVEL_PASS=""
 ENV APP_HOME="/var/lib/$APPNAME" TGT=/app \
     USER="${USERNAME:-appuser}" \
     UID="${USER_ID:-500}" GID="${GROUP_ID:-500}"
