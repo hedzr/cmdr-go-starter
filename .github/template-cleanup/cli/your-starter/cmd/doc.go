@@ -3,7 +3,7 @@ package cmd
 // goland:noinspection GoNameStartsWithPackageName
 const (
 	appName   = "%NAME%"
-	version   = "0.2.7"
+	version   = "1.0.0"
 	copyright = "%NAME% - A devops tool - cmdr series"
 	desc      = "%NAME% is an effective devops tool. It make an demo application for 'cmdr'"
 	longDesc  = `%NAME% is an effective devops tool. It make an demo application for 'cmdr'.
