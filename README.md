@@ -4,7 +4,7 @@
 
 A template repository to build your first app based [cmdr](https://github.com/hedzr/cmdr).
 
-> powered by [cmdr](https://github.com/hedzr/cmdr).
+> powered by [cmdr](https://github.com/hedzr/cmdr) v1.11+.
 
 ## fast guide:
 
@@ -58,7 +58,7 @@ make build
 
 ## Status
 
-- cmdr v1.9.1+
+- cmdr v1.11.6+
 - 
 
 ## LICENSE
