@@ -11,13 +11,13 @@ linters-settings:
       - opinionated
       - performance
       - style
+    disabled-checks:
+      - commentedOutCode
   govet:
     check-shadowing: true
   nolintlint:
     require-explanation: true
     require-specific: true
-  govet:
-    check-shadowing: true
   golint:
     min-confidence: 0
   gocyclo:
@@ -40,40 +40,47 @@ run:
 linters:
   disable-all: true
   enable:
-    - bodyclose
+    #/- bodyclose
     #- deadcode
     - depguard
     - dogsled
     - dupl
     - errcheck
+    - errorlint
+    #- exhaustive
     - exportloopref
-    - exhaustive
+    - funlen
     - goconst
     #- gocritic
     - gofmt
     #- goimports
     #- gomnd
+    - gocognit
+    - gocritic
     - gocyclo
+    - goprintffuncname
     - gosec
-    - gosimple
+    #/- gosimple
     - govet
     - ineffassign
+    #/- interfacer
+    #- maligned
     - misspell
     #- nolintlint
     #- nakedret
     - prealloc
     - predeclared
-    #- revive
-    - staticcheck
-    - structcheck
-    - stylecheck
+    - revive
+    #/- staticcheck
+    #- structcheck
+    #/- stylecheck
     #- thelper
-    - tparallel
+    #/- tparallel
     #- typecheck
     - unconvert
     #- unparam
     - varcheck
-    #- whitespace
+    - whitespace
     #- wsl
 
 #linters:
