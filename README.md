@@ -2,7 +2,7 @@
 
 [![Go](https://github.com/hedzr/cmdr-go-starter/actions/workflows/go.yml/badge.svg)](https://github.com/hedzr/cmdr-go-starter/actions/workflows/go.yml)
 
-A template repository to build your first app based [cmdr](https://github.com/hedzr/cmdr).
+A template repository to build your first Golang Open Source app based [cmdr](https://github.com/hedzr/cmdr).
 
 > powered by [cmdr](https://github.com/hedzr/cmdr) v1.11+.
 
