@@ -45,7 +45,7 @@ go generate ./...          # run it once at least, for gen the swagger-doc files
 go run ./cli/app/cli/app   # build the mainly main.go
 ```
 
-### Use Makefile for building and CI
+### ~~Use Makefile for building and CI~~
 
 You may use `make` simply:
 
@@ -58,7 +58,7 @@ make build
 
 ## Status
 
-- cmdr v1.11.6+
+- cmdr v1.11.9+
 - 
 
 ## LICENSE
