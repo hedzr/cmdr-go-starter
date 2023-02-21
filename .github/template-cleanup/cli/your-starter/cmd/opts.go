@@ -54,6 +54,7 @@ func init() {
 			// 	return
 			// }).
 			Group(cmdr.SysMgmtGroup).
+			EnvVars("TRACE").
 			AttachToRoot(root)
 	}, nil)
 	options = append(options, optAddTraceOption)
