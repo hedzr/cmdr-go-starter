@@ -1,15 +1,17 @@
 package internal
 
 import (
+	"runtime"
+	"sync"
+
 	"github.com/hedzr/cmdr"
 	"github.com/hedzr/cmdr/conf"
 	"github.com/hedzr/log"
 	"github.com/hedzr/log/basics"
 	"github.com/hedzr/log/closers"
+	"github.com/hedzr/log/detects"
 	"github.com/hedzr/log/dir"
 	"gopkg.in/hedzr/errors.v3"
-	"runtime"
-	"sync"
 )
 
 // App is a global singleton GlobalApp instance
@@ -94,7 +96,6 @@ func init() {
 
 // NewAppOption returns a cmdr.ExecOption so that you can attach it
 // into your application.
-//
 func NewAppOption() cmdr.ExecOption {
 	return func(w *cmdr.ExecWorker) {
 		cmdr.WithGlobalPreActions(appUniqueInstance.Init)(w) // appUniqueInstance will be closed automatically
@@ -122,7 +123,7 @@ func (s *GlobalApp) Init(cmd *cmdr.Command, args []string) (err error) {
 	// initialize all infrastructures here, such as: DB, Cache, MQ, ...
 
 	log.Debugf("* *App initializing...OS: %v, ARCH: %v", runtime.GOOS, runtime.GOARCH)
-	log.Debugf("  cmdr: InDebugging/IsDebuggerAttached: %v, DebugMode/TraceMode: %v/%v, LogLevel: %v\n", cmdr.InDebugging(), cmdr.GetDebugMode(), cmdr.GetTraceMode(), cmdr.GetLoggerLevel())
+	log.Debugf("  cmdr: InDebugging/IsDebuggerAttached: %v, DebugMode/TraceMode: %v/%v, LogLevel: %v\n", detects.InDebugging(), cmdr.GetDebugMode(), cmdr.GetTraceMode(), cmdr.GetLoggerLevel())
 	log.Debugf("  pwd: %v, exe: %v", dir.GetCurrentDir(), dir.GetExecutablePath())
 
 	s.cmd = cmd
