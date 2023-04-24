@@ -3,6 +3,7 @@ swaggerdocs/
 .idea/
 *.iml
 .DS\_Store
+*.code-workspace
 
 tmp/
 bin/
@@ -48,7 +49,6 @@ cover.html
 ###
 
 *_string.go
-
 
 ### Go template
 # Binaries for programs and plugins
