@@ -47,7 +47,7 @@ go run ./cli/your-app/main.go   # build the CLI app
 
 ## Status
 
-- cmdr v1.11.11+
+- cmdr v1.11.26+
 - 
 
 ## LICENSE
