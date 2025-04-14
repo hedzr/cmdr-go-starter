@@ -1,6 +1,7 @@
 module cmdr-starter
 
 go 1.21
+toolchain go1.24.1
 
 require (
 	github.com/hedzr/cmdr v1.11.26
@@ -16,9 +17,9 @@ require (
 	github.com/hedzr/evendeep v0.4.17 // indirect
 	github.com/konsorten/go-windows-terminal-sequences v1.0.3 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
-	golang.org/x/crypto v0.31.0 // indirect
+	golang.org/x/crypto v0.35.0 // indirect
 	golang.org/x/net v0.23.0 // indirect
-	golang.org/x/sys v0.28.0 // indirect
-	golang.org/x/term v0.27.0 // indirect
+	golang.org/x/sys v0.30.0 // indirect
+	golang.org/x/term v0.29.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
