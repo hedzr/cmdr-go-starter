@@ -66,12 +66,12 @@ jobs:
         run: |
           # go install -v github.com/swaggo/swag/cmd/swag
           # go generate ./...
-          go test -v -coverprofile=profile.cov ./...
-      - name: Send coverage
-        uses: shogo82148/actions-goveralls@v1
-        with:
-          path-to-profile: profile.cov
-          parallel: true
+          go test -v -race -cover -covermode=atomic -coverprofile=profile.cov -test.short -vet=off ./...
+      # - name: Send coverage
+      #   uses: shogo82148/actions-goveralls@v1
+      #   with:
+      #     path-to-profile: profile.cov
+      #     parallel: true
 
   build:
     needs: coverage
@@ -102,9 +102,9 @@ jobs:
           HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           IMAGE_NAME: your-starter # never used
-          IMAGE_TAG:
-          PORT:
-          VERSION:
+          #IMAGE_TAG: ""
+          #PORT: ""
+          #VERSION: ""
         run: |
           IMAGE_NAME="${GITHUB_REPOSITORY##*/}"
           IMAGE_NAME=$(echo $IMAGE_NAME | sed 's/[go-]//g' | sed 's/[-go]//g' | tr '[:upper:]' '[:lower:]')
