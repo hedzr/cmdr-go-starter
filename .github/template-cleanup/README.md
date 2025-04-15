@@ -7,9 +7,9 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/%REPOSITORY%)](https://goreportcard.com/report/github.com/%REPOSITORY%)<!--
 [![codecov](https://codecov.io/gh/%REPOSITORY%/branch/master/graph/badge.svg)](https://codecov.io/gh/%REPOSITORY%)
 [![Coverage Status](https://coveralls.io/repos/github/%REPOSITORY%/badge.svg?branch=master)](https://coveralls.io/github/%REPOSITORY%?branch=master) -->
-[![DocSite](https://img.shields.io/badge/Doc-Site-blue)](https://docs.hedzr.com/docs/cmdr.v2/)
+[![DocSite](https://img.shields.io/badge/Cmdr-Docs-blue)](https://docs.hedzr.com/docs/cmdr.v2/)
 
-A template repository to build your first Golang Open Source app based [cmdr](https://github.com/hedzr/cmdr).
+A template repository to build your first Golang Open Source app based on [cmdr.v2](https://github.com/hedzr/cmdr).
 
 > powered by [cmdr](https://github.com/hedzr/cmdr) v2.1+.
 
