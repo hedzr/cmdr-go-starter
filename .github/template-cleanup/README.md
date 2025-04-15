@@ -1,4 +1,4 @@
-# cmdr-go-starter
+# %REPOSITORY%
 
 ![Go](https://github.com/%REPOSITORY%/workflows/Go/badge.svg)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/%REPOSITORY%)
