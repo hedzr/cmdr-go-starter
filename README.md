@@ -1,6 +1,13 @@
 # cmdr-go-starter
 
-[![Go](https://github.com/hedzr/cmdr-go-starter/actions/workflows/go.yml/badge.svg)](https://github.com/hedzr/cmdr-go-starter/actions/workflows/go.yml)
+![Go](https://github.com/hedzr/cmdr-go-starter/workflows/Go/badge.svg)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/hedzr/cmdr-go-starter)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/hedzr/cmdr-go-starter.svg?label=release)](https://github.com/hedzr/cmdr-go-starter/releases)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/hedzr/cmdr-go-starter)
+[![Go Report Card](https://goreportcard.com/badge/github.com/hedzr/cmdr-go-starter)](https://goreportcard.com/report/github.com/hedzr/cmdr-go-starter)<!--
+[![codecov](https://codecov.io/gh/hedzr/cmdr-go-starter/branch/master/graph/badge.svg)](https://codecov.io/gh/hedzr/cmdr-go-starter)
+[![Coverage Status](https://coveralls.io/repos/github/hedzr/cmdr-go-starter/badge.svg?branch=master)](https://coveralls.io/github/hedzr/cmdr-go-starter?branch=master) -->
+[![DocSite](https://img.shields.io/badge/Doc-Site-blue)](https://docs.hedzr.com/docs/cmdr.v2/)
 
 A template repository to build your first Golang Open Source app based [cmdr](https://github.com/hedzr/cmdr).
 
