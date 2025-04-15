@@ -16,6 +16,9 @@ jobs:
     name: Template Cleanup
     runs-on: ubuntu-latest
     if: github.event.repository.name != 'cmdr-go-starter'
+    permissions:                # Job-level permissions configuration starts here
+      contents: write           # 'write' access to repository contents
+      pull-requests: write      # 'write' access to pull requests
     steps:
 
       # Check out current repository
@@ -81,7 +84,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit -m "Template cleanup"
+          git commit -m "Template cleanup done."
           # [ "$(git branch --show-current)" == "main" ] && git checkout master && git merge --no-ff main
 
       # Push changes
