@@ -42,7 +42,7 @@ jobs:
           find .github/template-cleanup/* -type f -exec sed -i "s/%USER%/$ACTOR/g" {} +
           find .github/template-cleanup/* -type f -exec sed -i "s/%REPOSITORY%/${GITHUB_REPOSITORY/\//\\/}/g" {} +
           find .github/template-cleanup/* -type f -exec sed -i "s/%GROUP%/$GROUP/g" {} +
-          
+
           # Replace template package name in project files with $GROUP
           #find docs -type f -exec sed -i "s/org.jetbrains.plugins.template/$GROUP/g" {} +
           #find docs -type f -exec sed -i "s/Template/$NAME/g" {} +
@@ -59,7 +59,12 @@ jobs:
           # mv config files
           find ./ci/etc/your-starter/* -type f -exec sed -i "s/your-starter/$NAME/g" {} +
           mv ./ci/etc/your-starter ./ci/etc/$NAME
-          mv ./ci/etc/$NAME/your-starter.yml ./ci/etc/$NAME/$NAME.yml
+          for ext in toml yml yaml json hcl; do
+            [ -f ./ci/etc/$NAME/your-starter.$ext ] && mv ./ci/etc/$NAME/your-starter.$ext ./ci/etc/$NAME/$NAME.$ext
+          done
+
+          # mv pkg/usr.local.lib files (used by dynCommand feature)
+          mv ./ci/pkg/usr.local.lib/your-starter ./ci/pkg/usr.local.lib/$NAME
 
           # Cleanup
           rm -rf \
