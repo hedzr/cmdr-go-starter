@@ -4,6 +4,7 @@ swaggerdocs/
 *.iml
 .DS\_Store
 *.code-workspace
+lint.txt
 
 tmp/
 bin/
