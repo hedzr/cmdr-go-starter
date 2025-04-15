@@ -220,15 +220,15 @@ jobs:
   #      if: startsWith(github.ref, 'refs/tags/')
 
 
-  # notifies coveralls that all test jobs are finished
-  finish-cov:
-    name: Finish Coverage
-    needs: coverage
-    runs-on: ubuntu-latest
-    steps:
-      - uses: shogo82148/actions-goveralls@v1
-        with:
-          parallel-finished: true
+  # # notifies coveralls that all test jobs are finished
+  # finish-cov:
+  #   name: Finish Coverage
+  #   needs: coverage
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: shogo82148/actions-goveralls@v1
+  #       with:
+  #         parallel-finished: true
 
 
 
