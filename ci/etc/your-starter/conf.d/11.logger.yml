@@ -1,9 +1,8 @@
-app:
-  logger:
-    level: DEBUG              # logrus based: DEBUG, INFO, WARNING, ERROR, FATAL, PANIC
-    format: text              # text (default), json
-    target: journal           # missing or 'default': "$dir/$serverName.log" will be created under daemon mode; 'journal': log to stdout and stderr, and you could send its to journal
-    dir: /var/log/app         # never used.
+logger:
+  level: DEBUG              # logrus based: DEBUG, INFO, WARNING, ERROR, FATAL, PANIC
+  format: text              # text (default), json
+  target: journal           # missing or 'default': "$dir/$serverName.log" will be created under daemon mode; 'journal': log to stdout and stderr, and you could send its to journal
+  dir: /var/log/app         # never used.
 
   #logger:
   #  level: INFO    # DEBUG, INFO, NOTICE, WARNING, ERROR, CRITICAL
@@ -16,13 +15,3 @@ app:
 #
 
 #
-
-
-
-
-
-
-
-
-
-

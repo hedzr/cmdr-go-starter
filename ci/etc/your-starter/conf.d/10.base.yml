@@ -1,13 +1,5 @@
-app:
-  base: true
+base:
   param1: false
-
-
-
-
-
-
-
-
-
-
+  param2: true
+  param3: 8
+  param4: 7m2s13us
