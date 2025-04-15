@@ -1,12 +1,12 @@
 package main
 
 import (
-	"cmdr-starter/cli/your-starter/cmd"
-	"github.com/hedzr/cmdr"
 	"testing"
+
+	"github.com/hedzr/cmdr/v2"
 )
 
 func Test1(t *testing.T) {
-	cmdr.Set("app.testing", true)
-	cmd.Entry()
+	cmdr.Store().Set("app.testing", true)
+	mainRun()
 }

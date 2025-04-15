@@ -1,12 +1,12 @@
-package cmd
+package main
 
-// goland:noinspection GoNameStartsWithPackageName
+//goland:noinspection GoNameStartsWithPackageName
 const (
 	appName   = "%NAME%"
 	version   = "1.0.0"
-	copyright = "%NAME% - A devops tool - cmdr series"
-	desc      = "%NAME% is an effective devops tool. It make an demo application for 'cmdr'"
-	longDesc  = `%NAME% is an effective devops tool. It make an demo application for 'cmdr'.
+	author    = `The Examples Authors`
+	desc      = `a good blueprint for you.`
+	longDesc  = `a good blueprint for you.`
 
 To get help for %NAME% building options, run 
 '%NAME% --help', or '%NAME% -h'.
