@@ -5,8 +5,8 @@ go 1.23.0
 toolchain go1.23.3
 
 require (
-	github.com/hedzr/cmdr-loaders v1.3.10
-	github.com/hedzr/cmdr/v2 v2.1.10
+	github.com/hedzr/cmdr-loaders v1.3.11
+	github.com/hedzr/cmdr/v2 v2.1.12
 )
 
 require (
