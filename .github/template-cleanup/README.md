@@ -9,7 +9,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/%REPOSITORY%/badge.svg?branch=master)](https://coveralls.io/github/%REPOSITORY%?branch=master) -->
 [![DocSite](https://img.shields.io/badge/Cmdr-Docs-blue)](https://docs.hedzr.com/docs/cmdr.v2/)
 
-A template repository to build your first Golang Open Source app based on [cmdr.v2](https://github.com/hedzr/cmdr).
+The source codes of this app are generated from the template repository [cmdr-go-starter](https://github.com/hedzr/cmdr-go-starter) and based on [cmdr.v2](https://github.com/hedzr/cmdr).
 
 > powered by [cmdr](https://github.com/hedzr/cmdr) v2.1+.
 
