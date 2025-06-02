@@ -20,7 +20,7 @@ ARG PORT
 ARG APK_MIRROR="dl-cdn.alpinelinux.org"
 ARG BUILDTIME=""
 ARG GIT_REVISION=""
-ARG W_PKG="github.com/hedzr/cmdr/conf"
+ARG W_PKG="github.com/hedzr/cmdr/v2/conf"
 ARG GOPROXY=""
 # ARG GOPROXY="https://goproxy.cn,direct"
 

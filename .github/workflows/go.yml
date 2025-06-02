@@ -152,7 +152,7 @@ jobs:
           export GOVERSION="$(go version)"
           export BUILDTIME="$(date -u '+%Y-%m-%d_%H-%M-%S')"
           export VERSION="$(grep -E "Version[ \t]+=[ \t]+" doc.go|grep -Eo "[0-9.]+")"
-          export W_PKG="github.com/hedzr/cmdr/conf"
+          export W_PKG="github.com/hedzr/cmdr/v2/conf"
           export LDFLAGS="-s -w \
             -X '$W_PKG.Githash=$GIT_REVISION' \
             -X '$W_PKG.GoVersion=$GOVERSION' \
