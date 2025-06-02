@@ -21,7 +21,8 @@ ARG APK_MIRROR="dl-cdn.alpinelinux.org"
 ARG BUILDTIME=""
 ARG GIT_REVISION=""
 ARG W_PKG="github.com/hedzr/cmdr/conf"
-ARG GOPROXY="https://goproxy.cn,direct"
+ARG GOPROXY=""
+# ARG GOPROXY="https://goproxy.cn,direct"
 
 ENV APP_HOME="/var/lib/$APPNAME" TGT=/app \
     USER=${USERNAME:-appuser} \
