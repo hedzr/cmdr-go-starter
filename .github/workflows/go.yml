@@ -120,7 +120,7 @@ jobs:
             --build-arg APPNAME=$IMAGE_NAME \
             --build-arg VERSION=$VERSION \
             --build-arg PORT=$PORT \
-            --build-arg GOPROXY=https://goproxy.io,direct \
+            --build-arg GOPROXY= \
             -t docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:$IMAGE_TAG \
             -t docker.pkg.github.com/$ACTOR/cli/$IMAGE_NAME:latest \
             -t $ACTOR/$IMAGE_NAME:$IMAGE_TAG \
