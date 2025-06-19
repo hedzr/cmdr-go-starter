@@ -14,8 +14,8 @@ To get help for your-starter building options, run
 	examples = `
 $ {{.AppName}} gen shell [--bash|--zsh|--auto]
   generate bash/shell completion scripts
-$ {{.AppName}} gen man
-  generate linux man page 1
+$ {{.AppName}} help
+  entering help subsystem within interactive mode
 $ {{.AppName}} --help
   show help screen.
 `
