@@ -20,8 +20,7 @@ import (
 func main() { mainRun() }
 
 func mainRun() {
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
+	ctx := context.Background()
 	app := prepareApp(cmd.Commands...) // define your own commands implementations with cmd/*.go
 	if err := app.Run(ctx); err != nil {
 		logz.ErrorContext(ctx, "Application Error:", "err", err) // stacktrace if in debug mode/build
