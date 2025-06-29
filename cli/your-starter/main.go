@@ -13,10 +13,6 @@ import (
 	"github.com/hedzr/cmdr/v2/pkg/logz"
 )
 
-// func init() {
-// 	// build.New(build.NewLoggerConfigWith(true, "logrus", "debug"))
-// }
-
 func main() { mainRun() }
 
 func mainRun() {
