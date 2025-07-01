@@ -1,0 +1,27 @@
+.DS_Store
+*.log
+*.lock
+*.code-workspace
+.idea/
+sav/
+SAV/
+REF/
+ref/
+draft/
+
+themes/
+
+# hugo
+/public/
+/resources/_gen/
+/assets/jsconfig.json
+hugo.log
+hugo_stats.json
+.hugo_build.lock
+hugo.exe
+hugo.darwin
+hugo.linux
+
+# python
+.venv
+*.pyc
