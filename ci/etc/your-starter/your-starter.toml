@@ -1,30 +1,33 @@
 # main config file
+
+# The following settings can be cleared safely.
+
 [server]
-type = ""                                            # http2 server always
-mux = "gin"                                          # might be: iris, echo, gin, gorilla, default, ...
-port = 9477
-ports = { tls = 9479, debug = 9478, default = 9477 }
-addr = ""                                            # default is "0.0.0.0" or ipv4 "*"
+    addr  = ""                                           # default is "0.0.0.0" or ipv4 "*"
+    mux   = "gin"                                        # might be: iris, echo, gin, gorilla, default, ...
+    port  = 9477
+    ports = { tls = 9479, debug = 9478, default = 9477 }
+    type  = ""                                           # http2 server always
 
 [server.addresses]
-rpc = ""
-advertise = ""
+    advertise = ""
+    rpc       = ""
 
 [server.auto-cert]
-enabled = false
-domains = ["example.com"]
-domains-2nd-level = ["aurora", "api", "home", "res"]
+    domains           = ["example.com"]
+    domains-2nd-level = ["api", "aurora", "home", "res"]
+    enabled           = false
 
 # used by certtool.XsTLSConfig
 [server.tls.certs]
-# enabled = true
-ca-cert = ""             # ca.pem (the implicit key file is ca.pem.key)
-server-cert = ""         # server.pem (another implicit file is server-bundle.pem)
-cert = ""                # cert.pem
-key = ""                 # key.pem
-client-auth = false      #
-min-tls-version = 0x0304 # 0x0304 = v1.3, 0x0303 = v1.2, ...
+    # enabled = true
+    ca-cert         = ""     # ca.pem (the implicit key file is ca.pem.key)
+    cert            = ""     # cert.pem
+    client-auth     = false  #
+    key             = ""     # key.pem
+    min-tls-version = 0x0304 # 0x0304 = v1.3, 0x0303 = v1.2, ...
+    server-cert     = ""     # server.pem (another implicit file is server-bundle.pem)
 
 [server.statics]
-assets = { url = "/assets", path = "./static/assets" }
-templates = { path = "./static/templates", pattern = "*.tmpl", left = "{{", right = "}}" }
+    assets    = { url = "/assets", path = "./static/assets" }
+    templates = { path = "./static/templates", pattern = "*.tmpl", left = "{{", right = "}}" }
