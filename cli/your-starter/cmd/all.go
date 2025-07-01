@@ -7,7 +7,7 @@ import (
 
 var Commands = append(
 	[]cli.CmdAdder{
-		multiCmd{},
+		&multiCmd{},
 		sndx{},
 	},
 	cmd.Commands[0], // include only jumpCmd
