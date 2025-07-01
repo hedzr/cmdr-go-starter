@@ -10,7 +10,7 @@ import (
 	"github.com/hedzr/cmdr/v2"
 	"github.com/hedzr/cmdr/v2/cli"
 	"github.com/hedzr/cmdr/v2/examples/devmode"
-	"github.com/hedzr/cmdr/v2/pkg/logz"
+	logz "github.com/hedzr/logg/slog"
 )
 
 func main() { mainRun() }
@@ -28,7 +28,9 @@ func mainRun() {
 
 func prepareApp(commands ...cli.CmdAdder) cli.App {
 	return loaders.Create(
-		appName, version, author, desc,
+		appName,
+		"1.0.0", // this version will be overwritten when building by -X ldflags
+		author, desc,
 
 		cmdr.WithAutoEnvBindings(true),  // default it's false
 		cmdr.WithSortInHelpScreen(true), // default it's false

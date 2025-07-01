@@ -2,8 +2,8 @@ package main
 
 //goland:noinspection GoNameStartsWithPackageName
 const (
-	appName  = "your-starter"
-	version  = "1.0.0"
+	appName = "your-starter"
+	// version  = "1.0.0"
 	author   = `The Examples Authors`
 	desc     = `a good blueprint for you.`
 	longDesc = `a good blueprint for you.
