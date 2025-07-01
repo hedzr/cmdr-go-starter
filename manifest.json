@@ -1,0 +1,15 @@
+{
+  "name": "Your-starter Docs",
+  "short_name": "Your-starter Docs",
+  "start_url": "/your-starter/",
+  "scope": "/your-starter/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/your-starter/favicon.svg",
+      "sizes": "512x512"
+    }
+  ]
+}
