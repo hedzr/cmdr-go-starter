@@ -9,14 +9,25 @@ import (
 	logz "github.com/hedzr/logg/slog"
 )
 
-// var lastMultiCmd *multiCmd
-
 type multiCmd struct {
 	root root
 }
 
+func set(app cli.App, s *multiCmd) {
+	app.Store().Set("multi-cmd", s)
+}
+
+func get(app cli.App) (s *multiCmd) {
+	if ptr, found := app.Store().Get("multi-cmd"); found && ptr != nil {
+		if ss, ok := ptr.(*multiCmd); ok {
+			s = ss
+		}
+	}
+	return
+}
+
 func (s *multiCmd) Add(app cli.App) {
-	// lastMultiCmd = s
+	set(app, s)
 
 	// just for debugging, removing this 'if' branch is safe.
 	if is.DebuggerAttached() {
@@ -120,13 +131,12 @@ func (s E) Action(ctx context.Context, cmd cli.Cmd, args []string) (err error) {
 	logz.Info(".   - E.Action() invoked.", "cmd", cmd, "args", args)
 	_, err = cmd.App().DoBuiltinAction(ctx, cli.ActionDefault, anyArrayToAnyArray(args)...)
 	fmt.Printf("E: %+v\n", s)
-
-	// if lastMultiCmd != nil {
-	// 	fmt.Printf("D: %+v\n", lastMultiCmd.root.A.D)
-	// 	fmt.Printf("A: %+v\n", lastMultiCmd.root.A)
-	// 	fmt.Printf("A.Fa3 (positional): %p\n", &lastMultiCmd.root.A.Fa3)
-	// 	_ = lastMultiCmd.postAction(ctx, cmd, args)
-	// }
+	if lastMultiCmd := get(cmd.App()); lastMultiCmd != nil {
+		fmt.Printf("D: %+v\n", lastMultiCmd.root.A.D)
+		fmt.Printf("A: %+v\n", lastMultiCmd.root.A)
+		fmt.Printf("A.Fa3 (positional): %p\n", &lastMultiCmd.root.A.Fa3)
+		_ = lastMultiCmd.postAction(ctx, cmd, args)
+	}
 	return
 }
 
@@ -136,12 +146,11 @@ func (s F) Action(ctx context.Context, cmd cli.Cmd, args []string) (err error) {
 	logz.Info(".   - F.Action() invoked.", "cmd", cmd, "args", args, "F5", s.F5)
 	_, err = cmd.App().DoBuiltinAction(ctx, cli.ActionDefault, anyArrayToAnyArray(args)...)
 	fmt.Printf("F: %+v\n", s)
-
-	// if lastMultiCmd != nil {
-	// 	fmt.Printf("D: %+v\n", lastMultiCmd.root.A.D)
-	// 	fmt.Printf("A: %+v\n", lastMultiCmd.root.A)
-	// 	_ = lastMultiCmd.postAction(ctx, cmd, args)
-	// }
+	if lastMultiCmd := get(cmd.App()); lastMultiCmd != nil {
+		fmt.Printf("D: %+v\n", lastMultiCmd.root.A.D)
+		fmt.Printf("A: %+v\n", lastMultiCmd.root.A)
+		_ = lastMultiCmd.postAction(ctx, cmd, args)
+	}
 	return
 }
 
