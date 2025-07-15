@@ -7,7 +7,7 @@ toolchain go1.23.3
 require (
 	github.com/hedzr/cmdr-loaders/lite v1.3.43
 	github.com/hedzr/cmdr/v2 v2.1.45
-	github.com/hedzr/is v0.8.45
+	github.com/hedzr/is v0.8.46
 	github.com/hedzr/logg v0.8.45
 )
 
