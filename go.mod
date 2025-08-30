@@ -1,8 +1,8 @@
 module cmdr-starter
 
-go 1.23.0
+go 1.24.0
 
-toolchain go1.23.3
+toolchain go1.24.5
 
 require (
 	github.com/hedzr/cmdr-loaders/lite v1.3.51
