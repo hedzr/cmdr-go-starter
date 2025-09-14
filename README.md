@@ -11,7 +11,8 @@
 
 A template repository to build your first Golang Open Source app based on [cmdr.v2](https://github.com/hedzr/cmdr).
 
-> powered by [cmdr](https://github.com/hedzr/cmdr) v2.1+.
+> powered by [cmdr](https://github.com/hedzr/cmdr) v2.1+.  
+> golang toolchain 1.24[.5] wanted.  
 
 ## fast guide
 
