@@ -1,7 +1,7 @@
 github.com/fsnotify/fsnotify v1.9.0 h1:2Ml+OJNzbYCTzsxtv8vKSFD9PbJjmhYF14k/jKC7S9k=
 github.com/fsnotify/fsnotify v1.9.0/go.mod h1:8jBTzvmWwFyi3Pb8djgCCO5IBqzKJ/Jwo8TRcHyHii0=
-github.com/hedzr/cmdr-loaders v1.3.60 h1:BHHu6g/bhcLke4qrI8bx4JxbMYumMr9a/AUN7S2buJ0=
-github.com/hedzr/cmdr-loaders v1.3.60/go.mod h1:4u3wacfLZ4z3eZS8T8sn0rBi+ZYtErnXRHWy3134FUk=
+github.com/hedzr/cmdr-loaders v1.3.61 h1:qHHI/gt849StLxwdyQcVdlikxs//3GR2wOnAzSSvuqU=
+github.com/hedzr/cmdr-loaders v1.3.61/go.mod h1:9zJ0do3Tl5A2YacvBkO0k+s8V8aztnVaTHraQqwJvvQ=
 github.com/hedzr/cmdr-loaders/lite v1.3.61 h1:2sdoFxK5yPx4ZF29HxYLhiCZWNouP8df7b0fvVmOvIE=
 github.com/hedzr/cmdr-loaders/lite v1.3.61/go.mod h1:hw03GSpeibwq6y0ktTkABKon+5B77uCiik2mEN7Rimw=
 github.com/hedzr/cmdr/v2 v2.1.61 h1:TLgrP3Nxw1BGH2Wqbo/5AFRG7ZgEKl+wUSLtt9nzMGs=

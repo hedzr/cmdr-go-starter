@@ -13,7 +13,7 @@ require (
 
 require (
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
-	github.com/hedzr/cmdr-loaders v1.3.60 // indirect
+	github.com/hedzr/cmdr-loaders v1.3.61 // indirect
 	github.com/hedzr/evendeep v1.3.61 // indirect
 	github.com/hedzr/store v1.3.61 // indirect
 	github.com/hedzr/store/codecs/json v1.3.61 // indirect
