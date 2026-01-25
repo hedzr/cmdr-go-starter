@@ -7,6 +7,8 @@ package starter
 
 const AppNameExample = "cmdr-go-starter" // appName for the current demo app
 
-const appName = "cmdr-go-starter" // appName of hedzr/cmdr-loaders package
-const version = "v2.1.66"         // version of hedzr/cmdr-loaders package | update it while bumping hedzr/cmdr-loaders' version
-const Version = version
+const (
+	appName = "cmdr-go-starter" // appName of hedzr/cmdr-loaders package
+	version = "v2.1.67"         // version of hedzr/cmdr-loaders package | update it while bumping hedzr/cmdr-loaders' version
+	Version = version
+)
