@@ -5,8 +5,8 @@ go 1.25.0
 require (
 	github.com/hedzr/cmdr-loaders/lite v1.4.0
 	github.com/hedzr/cmdr/v2 v2.2.0
-	github.com/hedzr/is v0.9.1
-	github.com/hedzr/logg v0.9.0
+	github.com/hedzr/is v0.9.3
+	github.com/hedzr/logg v0.9.3
 )
 
 require (
@@ -20,8 +20,8 @@ require (
 	github.com/hedzr/store/providers/file v1.4.0 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.4 // indirect
 	golang.org/x/exp v0.0.0-20260212183809-81e46e3db34a // indirect
-	golang.org/x/net v0.55.0 // indirect
-	golang.org/x/sys v0.45.0 // indirect
-	golang.org/x/term v0.43.0 // indirect
+	golang.org/x/net v0.56.0 // indirect
+	golang.org/x/sys v0.46.0 // indirect
+	golang.org/x/term v0.44.0 // indirect
 	gopkg.in/hedzr/errors.v3 v3.3.5 // indirect
 )
