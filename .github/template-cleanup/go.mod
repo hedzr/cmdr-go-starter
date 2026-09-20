@@ -3,25 +3,25 @@ module github.com/%REPOSITORY%
 go 1.26.0
 
 require (
-	github.com/hedzr/cmdr-loaders/lite v1.4.3
-	github.com/hedzr/cmdr/v2 v2.2.3
-	github.com/hedzr/is v0.9.3
-	github.com/hedzr/logg v0.9.3
+	github.com/hedzr/cmdr-loaders/lite v1.4.9
+	github.com/hedzr/cmdr/v2 v2.2.9
+	github.com/hedzr/is v0.9.9
+	github.com/hedzr/logg v0.9.9
 )
 
 require (
 	github.com/fsnotify/fsnotify v1.10.1 // indirect
-	github.com/hedzr/cmdr-loaders v1.4.3 // indirect
-	github.com/hedzr/evendeep v1.4.3 // indirect
-	github.com/hedzr/store v1.4.3 // indirect
-	github.com/hedzr/store/codecs/json v1.4.3 // indirect
-	github.com/hedzr/store/codecs/toml v1.4.3 // indirect
-	github.com/hedzr/store/providers/env v1.4.3 // indirect
-	github.com/hedzr/store/providers/file v1.4.3 // indirect
+	github.com/hedzr/cmdr-loaders v1.4.9 // indirect
+	github.com/hedzr/evendeep v1.4.9 // indirect
+	github.com/hedzr/store v1.4.9 // indirect
+	github.com/hedzr/store/codecs/json v1.4.9 // indirect
+	github.com/hedzr/store/codecs/toml v1.4.9 // indirect
+	github.com/hedzr/store/providers/env v1.4.9 // indirect
+	github.com/hedzr/store/providers/file v1.4.9 // indirect
 	github.com/pelletier/go-toml/v2 v2.4.3 // indirect
-	golang.org/x/exp v0.0.0-20260709172345-9ea1abe57597 // indirect
-	golang.org/x/net v0.57.0 // indirect
-	golang.org/x/sys v0.47.0 // indirect
-	golang.org/x/term v0.45.0 // indirect
+	golang.org/x/exp v0.0.0-20260908205506-85c1c2202aba // indirect
+	golang.org/x/net v0.59.0 // indirect
+	golang.org/x/sys v0.48.0 // indirect
+	golang.org/x/term v0.46.0 // indirect
 	gopkg.in/hedzr/errors.v3 v3.3.5 // indirect
 )
