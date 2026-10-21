@@ -6,7 +6,7 @@ require (
 	github.com/hedzr/cmdr-loaders/lite v1.4.9
 	github.com/hedzr/cmdr/v2 v2.2.9
 	github.com/hedzr/is v0.9.10
-	github.com/hedzr/logg v0.9.9
+	github.com/hedzr/logg v0.9.10
 )
 
 require (
